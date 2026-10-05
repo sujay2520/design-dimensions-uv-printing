@@ -34,7 +34,7 @@ function ServicesPage() {
           </h2>
         </div>
         <p className="mt-2 text-xs sm:text-sm text-muted">
-          As showcased on our workshop master board at Ideal Homes Circle:
+          As showcased on our workshop master showroom wall in Dwarakanagar, RR Nagar:
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
           {allFlatSurfaces.map((surface) => (

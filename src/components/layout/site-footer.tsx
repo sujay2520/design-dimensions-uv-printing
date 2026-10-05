@@ -22,7 +22,7 @@ export function SiteFooter() {
             </div>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-accent-fg/75">
-            Premier UV flatbed printing studio at Ideal Homes Circle, Rajarajeshwari Nagar. 
+            Premier UV flatbed printing studio at Dwarakanagar 1st Stage, Channasandra, Rajarajeshwari Nagar. 
             Direct printing on 30+ flat surfaces including Glass, Acrylic, WPC Doors, Wood, Metal & Canvas. 
             All quotes and proofs handled via WhatsApp and studio walk-in.
           </p>

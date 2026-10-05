@@ -60,7 +60,7 @@ export function EnquiryForm() {
           We have the details.
         </h2>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
-          Open WhatsApp to send these specs directly to our team, or walk in at Ideal Homes Circle with your artwork.
+          Open WhatsApp to send these specs directly to our team, or walk in at our Dwarakanagar, RR Nagar studio with your artwork.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Button asChild>

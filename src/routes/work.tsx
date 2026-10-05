@@ -34,7 +34,7 @@ function WorkPage() {
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
             Direct high-resolution printing on rigid substrates — Toughened Glass, Cast Acrylic, WPC Doors, 
-            Brass, Teak Wood, Canvas and Tiles. Walk in at Ideal Homes Circle to see these physical samples.
+            Brass, Teak Wood, Canvas and Tiles. Walk in at our Dwarakanagar, RR Nagar studio to inspect these physical samples.
           </p>
         </div>
         <Button asChild>

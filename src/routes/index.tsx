@@ -29,7 +29,7 @@ function Hero() {
         <div className="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent w-fit">
           <span>{site.kannadaPlace}</span>
           <span className="text-border">·</span>
-          <span>Ideal Homes Circle</span>
+          <span>Dwarakanagar · Channasandra</span>
         </div>
         
         <h1 className="mt-4 font-display text-[2.5rem] leading-[1.08] tracking-tight text-fg sm:text-6xl font-bold">
@@ -61,7 +61,7 @@ function Hero() {
         <div className="mt-6 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm text-muted">
           <span className="flex items-center gap-1.5 font-medium text-fg">
             <MapPin className="size-4 text-accent" />
-            Shop 14, Ideal Homes Circle
+            8/2 A, 18th Main Rd, Dwarakanagar
           </span>
           <span className="text-border">|</span>
           <a href={`tel:+${site.phoneE164}`} className="flex items-center gap-1.5 font-medium text-accent hover:underline">
@@ -69,7 +69,7 @@ function Hero() {
             {site.phoneDisplay}
           </a>
           <span className="text-border">|</span>
-          <span>Ideal Homes Circle · Walk-in Studio</span>
+          <span>Channasandra · Walk-in Studio</span>
         </div>
       </div>
 
@@ -355,21 +355,21 @@ function VisitTeaser() {
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
       <img
-        src="/prints/official-board.jpg"
-        alt="Design Dimensions workshop board in RR Nagar"
-        className="aspect-16/10 w-full rounded-2xl object-cover border border-border"
+        src="/prints/workshop-sample-wall.jpg"
+        alt="Design Dimensions workshop showroom sample wall in RR Nagar"
+        className="aspect-16/10 w-full rounded-2xl object-cover border border-border shadow-sm"
       />
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-          Walk In
+          Walk In Studio
         </p>
         <h2 className="mt-2 font-display text-3xl sm:text-4xl tracking-tight text-fg">
-          Ideal Homes Circle, RR Nagar.
+          Dwarakanagar, Channasandra, RR Nagar.
         </h2>
         <p className="mt-4 text-sm leading-relaxed text-muted">
-          Located right at Ideal Homes Circle, Rajarajeshwari Nagar. 
-          Conveniently accessible via Namma Metro <strong>Purple Line</strong> (RR Nagar Metro Station) and Mysore Road. 
-          Serving RR Nagar, Kengeri, BHEL Layout, Ullal, Nagarbhavi, Banashankari, and Global Village Tech Park.
+          Located at 8/2 A, 18th Main Road, Dwarakanagar 1st Stage, Channasandra, Rajarajeshwari Nagar. 
+          Conveniently accessible via Namma Metro <strong>Purple Line</strong> (RR Nagar & Kengeri Metro Stations) and Mysore Road. 
+          Serving Channasandra, Dwarakanagar, RR Nagar, Kengeri, Ideal Homes, BHEL Layout, Ullal, Nagarbhavi, Banashankari, and Global Village Tech Park.
         </p>
         <ul className="mt-6 space-y-2 text-sm text-fg">
           {site.hours.map((h) => (
