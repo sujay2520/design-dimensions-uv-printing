@@ -19,8 +19,7 @@ function ProcessPage() {
         Proof first. Then the UV lamp.
       </h1>
       <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
-        Walk in, send a WhatsApp, or use the enquiry form. We do not take
-        payment on this website.
+        Walk in, send a WhatsApp message, or use our enquiry form for proof review and custom quotes.
       </p>
 
       <ol className="mt-14 space-y-8">

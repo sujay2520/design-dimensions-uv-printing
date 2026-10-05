@@ -85,11 +85,10 @@ function EnquirePage() {
         <div className="rounded-xl border border-accent/25 bg-accent/5 p-4 text-xs text-muted space-y-1.5">
           <div className="flex items-center gap-1.5 font-semibold text-fg">
             <ShieldCheck className="size-4 text-accent" />
-            <span>Zero Online Payment Policy</span>
+            <span>Digital Proof & Convenient Payment</span>
           </div>
           <p>
-            No credit card or online payment is collected on this website. 
-            All billing is settled directly with the studio via UPI, Cash or Bank Transfer upon proof verification.
+            Share your requirements or artwork file. We inspect your file, share a 1:1 scale digital proof on WhatsApp, and accept convenient payments via WhatsApp (UPI / Bank Transfer) or at the studio upon proof sign-off.
           </p>
         </div>
       </div>

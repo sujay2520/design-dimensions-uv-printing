@@ -89,7 +89,7 @@ export function SiteFooter() {
       <div className="border-t border-accent-fg/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-accent-fg/50 sm:flex-row sm:justify-between sm:px-6">
           <p>© {new Date().getFullYear()} Design Dimensions. RR Nagar, Bengaluru 560098.</p>
-          <p>No online checkout · Walk-in consultations & WhatsApp proofs only.</p>
+          <p>Walk-in consultations, WhatsApp digital proofs & direct billing.</p>
         </div>
       </div>
     </footer>

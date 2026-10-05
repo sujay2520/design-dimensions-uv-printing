@@ -60,8 +60,7 @@ export function EnquiryForm() {
           We have the details.
         </h2>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
-          Nothing is charged here. Open WhatsApp to send the same note to the
-          studio, or walk in at Ideal Homes Circle with the artwork.
+          Open WhatsApp to send these specs directly to our team, or walk in at Ideal Homes Circle with your artwork.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Button asChild>
@@ -79,8 +78,8 @@ export function EnquiryForm() {
 
   return (
     <form onSubmit={onSubmit} className="rounded-xl border border-border bg-surface p-5 sm:p-8">
-      <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
-        No payment on this form
+      <p className="text-xs font-medium uppercase tracking-[0.16em] text-accent">
+        Direct Studio Enquiry
       </p>
       <h2 className="mt-2 font-display text-3xl tracking-tight">
         Tell us the job.

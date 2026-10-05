@@ -69,7 +69,7 @@ function VisitPage() {
               </p>
             </div>
             <div className="mt-5 rounded-lg border border-border/80 bg-wash/50 p-3 text-xs text-muted">
-              <p className="font-semibold text-fg">No Online Payments on Website</p>
+              <p className="font-semibold text-fg">Order & Payment Confirmation</p>
               <p className="mt-0.5">{site.termsNote}</p>
             </div>
           </div>

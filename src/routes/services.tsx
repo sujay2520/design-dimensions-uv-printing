@@ -98,7 +98,7 @@ function ServicesPage() {
             Specialized Services & Turnaround
           </h2>
           <p className="mt-2 text-sm text-muted">
-            All prices are indicative starting guidelines. Final estimate provided upon artwork inspection & dimension proof.
+            Custom quotation provided upon artwork inspection & dimension proof. Share your requirements on WhatsApp for an instant estimate.
           </p>
         </div>
 
@@ -140,7 +140,7 @@ function ServicesPage() {
                   <ShieldCheck className="size-4 text-accent shrink-0 mt-0.5" />
                   <div>
                     <dt className="text-[11px] font-semibold uppercase tracking-wider text-muted">
-                      Guideline Pricing
+                      Direct Estimate
                     </dt>
                     <dd className="mt-0.5 font-medium text-fg">{svc.from}</dd>
                   </div>
