@@ -21,7 +21,7 @@ function ServicesPage() {
       </h1>
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
         Equipped with industrial large-format UV flatbed printers up to 8×4 ft bed size. 
-        Instant UV-LED photopolymerization cures durable, scratch-resistant inks directly onto the substrate 
+        Instant UV photopolymerization cures durable, scratch-resistant inks directly onto the substrate 
         with vibrant CMYK, multi-pass opaque White ink, and spot varnish.
       </p>
 

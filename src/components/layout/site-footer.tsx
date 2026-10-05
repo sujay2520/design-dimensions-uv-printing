@@ -62,15 +62,9 @@ export function SiteFooter() {
             <p className="text-xs text-accent-fg/60 pt-1">Landmark: {site.landmark}</p>
             
             <div className="pt-3">
-              <span className="text-xs text-accent-fg/50 block">Primary & WhatsApp:</span>
+              <span className="text-xs text-accent-fg/50 block">Office & WhatsApp:</span>
               <a className="font-semibold text-accent-fg hover:underline" href={`tel:+${site.phoneE164}`}>
                 {site.phoneDisplay}
-              </a>
-            </div>
-            <div>
-              <span className="text-xs text-accent-fg/50 block">Studio Landline:</span>
-              <a className="font-semibold text-accent-fg hover:underline" href={`tel:+${site.phoneSecondaryE164}`}>
-                {site.phoneSecondary}
               </a>
             </div>
             <div className="pt-1">

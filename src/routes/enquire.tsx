@@ -31,13 +31,9 @@ function EnquirePage() {
           <div className="flex items-start gap-3">
             <Phone className="size-4 text-accent shrink-0 mt-1" />
             <div className="text-sm">
-              <span className="text-muted block text-xs">Direct Phone Lines</span>
+              <span className="text-muted block text-xs">Direct Office Line</span>
               <a className="font-semibold text-fg hover:text-accent" href={`tel:+${site.phoneE164}`}>
                 {site.phoneDisplay}
-              </a>
-              <span className="text-muted text-xs"> / </span>
-              <a className="font-semibold text-fg hover:text-accent" href={`tel:+${site.phoneSecondaryE164}`}>
-                {site.phoneSecondary}
               </a>
             </div>
           </div>
@@ -52,7 +48,7 @@ function EnquirePage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Chat on WhatsApp (+91 93432 22266)
+                Chat on WhatsApp ({site.phoneDisplay})
               </a>
             </div>
           </div>

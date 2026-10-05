@@ -56,15 +56,9 @@ function VisitPage() {
             <h2 className="mt-7 font-display text-2xl text-fg">Call & WhatsApp</h2>
             <div className="mt-3 space-y-1.5 text-sm">
               <p>
-                <span className="text-muted text-xs block">Primary & WhatsApp:</span>
+                <span className="text-muted text-xs block">Office & WhatsApp:</span>
                 <a className="font-semibold text-accent hover:underline text-base" href={`tel:+${site.phoneE164}`}>
                   {site.phoneDisplay}
-                </a>
-              </p>
-              <p>
-                <span className="text-muted text-xs block">Studio Desk:</span>
-                <a className="font-semibold text-accent hover:underline text-base" href={`tel:+${site.phoneSecondaryE164}`}>
-                  {site.phoneSecondary}
                 </a>
               </p>
               <p className="pt-1">

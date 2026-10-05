@@ -8,10 +8,8 @@ export const site = {
   kannadaPlace: "ಆರ್.ಆರ್. ನಗರ · ಬೆಂಗಳೂರು",
   description:
     "Premier UV flatbed printing studio at Ideal Homes Circle, RR Nagar, Bengaluru. Direct printing on Acrylic, Glass, Wood, WPC Doors, ACP, Metal, Tiles, Canvas, Wallpaper & 30+ flat surfaces. Eco-friendly instant UV curing. Walk-in studio & WhatsApp enquiries only.",
-  phoneDisplay: "+91 93432 22266",
-  phoneSecondary: "+91 94825 58936",
-  phoneE164: "919343222266",
-  phoneSecondaryE164: "919482558936",
+  phoneDisplay: "+91 94825 58936",
+  phoneE164: "919482558936",
   email: "print.designdimensions@gmail.com",
   addressLines: [
     "Shop 14, Ideal Homes Circle",
@@ -155,7 +153,7 @@ export const services = [
     slug: "acrylic-uv",
     title: "UV on Acrylic & 3D Cut Letters",
     summary: "Glossy, high-definition direct flatbed prints on 3mm, 5mm, 8mm & 10mm sheets.",
-    body: "Printed directly with high-output UV LED curing on clear, frosted, white or black acrylic. Back-printed with opaque white layer for crystal-depth effect, or front-printed for tactile gloss. Includes precision CNC cutting, beveling and standoff wall fixtures.",
+    body: "Printed directly with high-output UV curing on clear, frosted, white or black acrylic. Back-printed with opaque white layer for crystal-depth effect, or front-printed for tactile gloss. Includes precision CNC cutting, beveling and standoff wall fixtures.",
     typical: "2–4 working days",
     from: "₹150 / sq ft",
     image: "/prints/lion-splatter.jpg",
@@ -346,10 +344,10 @@ export const works = [
   },
   {
     id: "flatbed-printer",
-    title: "Flatbed UV Machine in Active Curing",
-    material: "Industrial Multi-Color & LED UV Curing",
+    title: "Flatbed UV Machine in Active UV Curing",
+    material: "Industrial Multi-Color & Active UV Curing",
     area: "In-House Studio Workshop",
-    image: "/prints/flatbed-printer-action.jpg",
+    image: "/prints/hero-printer.jpg",
     category: "Studio",
     featured: true,
     tag: "Production",
@@ -465,7 +463,7 @@ export const processSteps = [
   {
     n: "04",
     title: "Precision UV Flatbed Printing & Curing",
-    body: "Micro-piezo printheads lay UV-curable inks that are instantly polymerized with high-intensity UV LED lamps. Multiple layers (Primer + White + CMYK + Gloss/Varnish) are deposited in one pass.",
+    body: "Micro-piezo printheads lay UV-curable inks that are instantly polymerized with high-intensity UV lamps. Multiple layers (Primer + White + CMYK + Gloss/Varnish) are deposited in one pass.",
   },
   {
     n: "05",

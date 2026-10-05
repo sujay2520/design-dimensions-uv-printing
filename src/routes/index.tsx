@@ -43,7 +43,7 @@ function Hero() {
         <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
           Direct digital UV printing on <strong>30+ flat surfaces</strong> — Toughened Glass, Cast Acrylic, WPC Doors, 
           Natural Wood & MDF, Metal & ACP, Brass Plaques, Fine Art Canvas, and Ceramic Tiles. 
-          Eco-friendly UV-LED instant curing for vibrant colors and scratch-proof durability.
+          Eco-friendly UV instant curing for vibrant colors and scratch-proof durability.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -76,13 +76,13 @@ function Hero() {
       <div className="lg:col-span-5">
         <figure className="overflow-hidden rounded-2xl border border-border bg-surface shadow-md">
           <img
-            src="/prints/flatbed-printer-action.jpg"
-            alt="Design Dimensions Industrial UV Flatbed Printer with LED Curing"
+            src="/prints/hero-printer.jpg"
+            alt="Design Dimensions Industrial UV Flatbed Printer with Active UV Curing"
             className="aspect-4/3 w-full object-cover"
           />
           <figcaption className="border-t border-border bg-wash/50 px-4 py-3 text-xs text-muted flex items-center justify-between">
-            <span className="font-medium text-fg">Industrial Flatbed Printer</span>
-            <span className="text-accent font-semibold">Active LED Curing</span>
+            <span className="font-medium text-fg">Industrial Flatbed UV Printer</span>
+            <span className="text-accent font-semibold">Active UV Curing</span>
           </figcaption>
         </figure>
       </div>
