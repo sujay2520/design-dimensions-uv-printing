@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { materials, services, allFlatSurfaces, whatsappHref } from "@/lib/site";
+import { materials, services, allFlatSurfaces, substrateCategories, whatsappHref } from "@/lib/site";
 import { Layers, ShieldCheck, Clock, CheckCircle } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
@@ -16,8 +16,8 @@ function ServicesPage() {
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
         Industrial & Custom Flatbed Printing
       </p>
-      <h1 className="mt-3 max-w-3xl font-display text-4xl sm:text-5xl tracking-tight text-fg">
-        Direct UV Printing on Any Rigid & Flat Surface
+      <h1 className="mt-3 max-w-3xl font-display text-4xl sm:text-5xl tracking-tight text-fg font-bold">
+        UV Printing on All Flat Surfaces
       </h1>
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
         Equipped with industrial large-format UV flatbed printers up to 8×4 ft bed size. 
@@ -25,16 +25,16 @@ function ServicesPage() {
         with vibrant CMYK, multi-pass opaque White ink, and spot varnish.
       </p>
 
-      {/* 30+ Flat Surfaces Master Showcase */}
+      {/* 28+ Flat Surfaces Master Showcase */}
       <section className="mt-12 rounded-2xl border border-border bg-surface p-6 sm:p-8">
         <div className="flex items-center gap-2">
           <Layers className="size-5 text-accent" />
-          <h2 className="font-display text-2xl text-fg">
-            30+ Compatible Flat Surfaces & Substrates
+          <h2 className="font-display text-2xl text-fg font-bold">
+            28+ Compatible Flat Surfaces & Substrates
           </h2>
         </div>
         <p className="mt-2 text-xs sm:text-sm text-muted">
-          As showcased on our workshop master showroom wall in Dwarakanagar, RR Nagar:
+          As showcased on our workshop master showroom wall in Dwarakanagar Stage 1, Channasandra, RR Nagar:
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
           {allFlatSurfaces.map((surface) => (
@@ -45,6 +45,31 @@ function ServicesPage() {
               <CheckCircle className="size-3 text-accent" />
               {surface}
             </span>
+          ))}
+          <span className="inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/15 px-3 py-1.5 text-xs font-semibold text-accent">
+            …and many more flat surfaces
+          </span>
+        </div>
+
+        {/* Categorized Taxonomies */}
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 border-t border-border/60 pt-6">
+          {substrateCategories.map((cat) => (
+            <div key={cat.category} className="rounded-xl border border-border/70 bg-wash/40 p-4">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-display text-sm font-bold text-fg">{cat.category}</h3>
+                <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-semibold text-accent">
+                  {cat.badge}
+                </span>
+              </div>
+              <p className="text-[11px] text-muted mb-3">{cat.description}</p>
+              <div className="flex flex-wrap gap-1">
+                {cat.substrates.map((sub) => (
+                  <span key={sub} className="rounded-md border border-border/60 bg-surface px-2 py-0.5 text-[10px] text-fg">
+                    {sub}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>

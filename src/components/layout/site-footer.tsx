@@ -61,11 +61,19 @@ export function SiteFooter() {
             ))}
             <p className="text-xs text-accent-fg/60 pt-1">Landmark: {site.landmark}</p>
             
-            <div className="pt-3">
-              <span className="text-xs text-accent-fg/50 block">Office & WhatsApp:</span>
-              <a className="font-semibold text-accent-fg hover:underline" href={`tel:+${site.phoneE164}`}>
-                {site.phoneDisplay}
-              </a>
+            <div className="pt-3 space-y-1.5">
+              <div>
+                <span className="text-xs text-accent-fg/50 block">Office Call:</span>
+                <a className="font-semibold text-accent-fg hover:underline" href={`tel:+${site.officePhoneE164}`}>
+                  {site.officePhoneDisplay}
+                </a>
+              </div>
+              <div>
+                <span className="text-xs text-accent-fg/50 block">WhatsApp (Chat & Quotes):</span>
+                <a className="font-semibold text-emerald-400 hover:underline" href={whatsappHref()} target="_blank" rel="noreferrer">
+                  {site.whatsappDisplay}
+                </a>
+              </div>
             </div>
             <div className="pt-1">
               <span className="text-xs text-accent-fg/50 block">Official Email:</span>

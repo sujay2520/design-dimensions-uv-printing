@@ -62,19 +62,26 @@ function VisitPage() {
             </ul>
 
             <h2 className="mt-7 font-display text-2xl text-fg">Call & WhatsApp</h2>
-            <div className="mt-3 space-y-1.5 text-sm">
-              <p>
-                <span className="text-muted text-xs block">Office & WhatsApp:</span>
-                <a className="font-semibold text-accent hover:underline text-base" href={`tel:+${site.phoneE164}`}>
-                  {site.phoneDisplay}
+            <div className="mt-3 space-y-2.5 text-sm">
+              <div>
+                <span className="text-muted text-xs block">Studio / Office Line:</span>
+                <a className="font-semibold text-accent hover:underline text-base" href={`tel:+${site.officePhoneE164}`}>
+                  {site.officePhoneDisplay}
                 </a>
-              </p>
-              <p className="pt-1">
+              </div>
+              <div>
+                <span className="text-muted text-xs block">WhatsApp (Quotations & Digital Proofs):</span>
+                <a className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline text-base flex items-center gap-1.5" href={whatsappHref()} target="_blank" rel="noreferrer">
+                  <span>{site.whatsappDisplay}</span>
+                  <span className="text-[11px] font-normal bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-full">Direct Chat</span>
+                </a>
+              </div>
+              <div className="pt-1">
                 <span className="text-muted text-xs block">Official Email:</span>
                 <a className="text-accent hover:underline" href={`mailto:${site.email}`}>
                   {site.email}
                 </a>
-              </p>
+              </div>
             </div>
             <div className="mt-5 rounded-lg border border-border/80 bg-wash/50 p-3 text-xs text-muted">
               <p className="font-semibold text-fg">Order & Payment Confirmation</p>

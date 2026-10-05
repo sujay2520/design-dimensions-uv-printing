@@ -12,7 +12,16 @@ export const Route = createFileRoute("/work")({
   }),
 });
 
-const categories = ["All", "Glass", "Acrylic", "Devotional", "Corporate", "Wood", "Canvas", "Studio"] as const;
+const categories = [
+  "All",
+  "Doors & Panels",
+  "Glass & Glazing",
+  "Acrylic & Signage",
+  "Wood & Laminates",
+  "ACP & Metal",
+  "Devotional & Sanctum",
+  "Workshop & Machine",
+] as const;
 
 function WorkPage() {
   const [selectedCat, setSelectedCat] = useState<(typeof categories)[number]>("All");

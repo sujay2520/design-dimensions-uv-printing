@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, MapPin, Sparkles, CheckCircle, Phone, MessageSquare } from "lucide-react";
+import { ArrowRight, MapPin, Sparkles, CheckCircle, Phone, MessageSquare, ShieldCheck, Leaf, Palette, Award, Clock, Building2, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { faqs, materials, processSteps, services, site, works, prestigiousClients, whatsappHref } from "@/lib/site";
+import { faqs, materials, processSteps, services, site, works, prestigiousClients, whatsappHref, whyChooseUs, allFlatSurfaces, substrateCategories } from "@/lib/site";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -10,6 +10,7 @@ function Home() {
     <main>
       <Hero />
       <EnterpriseTrustBar />
+      <WhyChooseUsSection />
       <SpecialCraftBanner />
       <ServicesPreview />
       <MaterialsSection />
@@ -32,52 +33,53 @@ function Hero() {
           <span>Dwarakanagar · Channasandra</span>
         </div>
         
-        <h1 className="mt-4 font-display text-[2.5rem] leading-[1.08] tracking-tight text-fg sm:text-6xl font-bold">
-          High-Definition UV Flatbed Printing in RR Nagar.
+        <h1 className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-fg leading-[1.08]">
+          DESIGN DIMENSIONS
         </h1>
         
-        <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-accent">
-          {site.tagline}
-        </p>
+        <div className="mt-2 space-y-1">
+          <p className="text-sm sm:text-base font-semibold uppercase tracking-[0.14em] text-accent">
+            UV PRINTING – INTERIORS & EXTERIORS
+          </p>
+          <p className="text-xs sm:text-sm font-medium text-muted">
+            Most Modern & Eco-Friendly Printing Solutions
+          </p>
+        </div>
 
         <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
-          Direct digital UV printing on <strong>30+ flat surfaces</strong> — Toughened Glass, Cast Acrylic, WPC Doors, 
-          Natural Wood & MDF, Metal & ACP, Brass Plaques, Fine Art Canvas, and Ceramic Tiles. 
-          Eco-friendly UV instant curing for vibrant colors and scratch-proof durability.
+          At DESIGN DIMENSIONS, we deliver premium-quality UV printing solutions for both interior and exterior applications. Our advanced UV printing technology produces vibrant, durable, scratch-resistant, and long-lasting prints on a wide range of materials, making it easy to create customized products that perfectly suit your requirements.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="shadow-sm">
+          <Button asChild size="lg" className="shadow-sm bg-emerald-600 hover:bg-emerald-700 text-white">
             <a href={whatsappHref()} target="_blank" rel="noreferrer" className="flex items-center gap-2">
               <MessageSquare className="size-4" />
-              <span>Get WhatsApp Quote</span>
+              <span>WhatsApp: {site.whatsappDisplay}</span>
             </a>
           </Button>
           <Button asChild variant="outline" size="lg">
-            <Link to="/work">Browse Real Work</Link>
+            <a href={`tel:+${site.officePhoneE164}`} className="flex items-center gap-2">
+              <Phone className="size-4 text-accent" />
+              <span>Office: {site.officePhoneDisplay}</span>
+            </a>
           </Button>
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm text-muted">
           <span className="flex items-center gap-1.5 font-medium text-fg">
             <MapPin className="size-4 text-accent" />
-            8/2 A, 18th Main Rd, Dwarakanagar
+            #8/2 A, 18th Main Rd, Dwarakanagar Stage 1, Channasandra
           </span>
           <span className="text-border">|</span>
-          <a href={`tel:+${site.phoneE164}`} className="flex items-center gap-1.5 font-medium text-accent hover:underline">
-            <Phone className="size-3.5" />
-            {site.phoneDisplay}
-          </a>
-          <span className="text-border">|</span>
-          <span>Channasandra · Walk-in Studio</span>
+          <span className="text-accent font-medium">Eco-Friendly Active UV Curing</span>
         </div>
       </div>
 
       <div className="lg:col-span-5">
         <figure className="overflow-hidden rounded-2xl border border-border bg-surface shadow-md">
           <img
-            src="/prints/flatbed-printer-action.jpg"
-            alt="Design Dimensions Industrial UV Flatbed Printer with Active UV Curing"
+            src="/prints/uv-printer-active-curing-head.jpg"
+            alt="Design Dimensions Industrial UV Flatbed Printer with Active UV Curing Head"
             className="aspect-4/3 w-full object-cover"
           />
           <figcaption className="border-t border-border bg-wash/50 px-4 py-3 text-xs text-muted flex items-center justify-between">
@@ -85,6 +87,60 @@ function Hero() {
             <span className="text-accent font-semibold">Active UV Curing</span>
           </figcaption>
         </figure>
+      </div>
+    </section>
+  );
+}
+
+function WhyChooseUsSection() {
+  const iconMap: Record<string, React.ReactNode> = {
+    "Active UV Curing": <Sparkles className="size-5 text-accent" />,
+    "Zero Toxic Fumes": <Leaf className="size-5 text-emerald-500" />,
+    "1440 DPI Precision": <Palette className="size-5 text-accent" />,
+    "100% Waterproof": <ShieldCheck className="size-5 text-accent" />,
+    "Fade Proof": <Award className="size-5 text-accent" />,
+    "Fast Local Delivery": <Clock className="size-5 text-accent" />,
+    "Homes & Enterprise": <Building2 className="size-5 text-accent" />,
+  };
+
+  return (
+    <section className="border-b border-border bg-wash/30 py-16 sm:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            Value Proposition
+          </p>
+          <h2 className="mt-2 font-display text-3xl sm:text-4xl tracking-tight text-fg font-bold">
+            Why Choose Us?
+          </h2>
+          <p className="mt-3 text-sm text-muted leading-relaxed">
+            Delivering the most modern & eco-friendly UV printing solutions for homes, commercial interiors, and corporate environments.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {whyChooseUs.map((item) => (
+            <div
+              key={item.title}
+              className="flex flex-col rounded-xl border border-border/80 bg-surface p-5 shadow-xs transition-colors hover:border-accent/40"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="p-2 rounded-lg bg-wash border border-border/60">
+                  {iconMap[item.highlight] ?? <CheckCircle className="size-5 text-accent" />}
+                </span>
+                <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-[11px] font-semibold text-accent">
+                  {item.highlight}
+                </span>
+              </div>
+              <h3 className="font-display text-lg font-bold text-fg tracking-tight">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-muted">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -234,21 +290,56 @@ function ServicesPreview() {
 
 function MaterialsSection() {
   return (
-    <section className="bg-ink text-accent-fg">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-fg/60">
-          Versatile Media
-        </p>
-        <h2 className="mt-2 max-w-2xl font-display text-3xl sm:text-4xl tracking-tight">
-          Over 30 Substrates. If it is flat, we print it.
-        </h2>
-        <p className="mt-3 max-w-xl text-sm leading-relaxed text-accent-fg/80">
-          From heavy waterproof WPC entrance doors to float glass backsplashes and mirror-finish brass plates.
-        </p>
+    <section className="bg-ink text-accent-fg py-16 sm:py-24">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-fg/60">
+              Direct UV Flatbed Printing
+            </p>
+            <h2 className="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+              UV Printing on All Flat Surfaces
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm sm:text-base leading-relaxed text-accent-fg/80">
+              We print directly on <strong>28+ versatile flat materials</strong> with instant active UV photopolymerization. 
+              Vibrant, scratch-resistant, water-resistant, and engineered for both interior aesthetics and exterior durability.
+            </p>
+          </div>
+          <Button asChild className="bg-accent text-accent-fg hover:opacity-90 shrink-0">
+            <a href={whatsappHref("Hello Design Dimensions, I want to check UV printing feasibility for my material.")} target="_blank" rel="noreferrer">
+              Ask About Your Material
+            </a>
+          </Button>
+        </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 28 Substrates Interactive Cloud */}
+        <div className="mt-10 rounded-2xl border border-accent-fg/15 bg-accent-fg/5 p-6 sm:p-8">
+          <div className="flex items-center gap-2 mb-4">
+            <Layers className="size-4 text-accent" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-accent-fg/80">
+              We Print On (All Flat Surfaces):
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {allFlatSurfaces.map((s) => (
+              <span
+                key={s}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-accent-fg/15 bg-accent-fg/5 px-3 py-1.5 text-xs font-medium text-accent-fg hover:border-accent hover:bg-accent-fg/10 transition-colors"
+              >
+                <CheckCircle className="size-3 text-accent" />
+                {s}
+              </span>
+            ))}
+            <span className="inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/20 px-3 py-1.5 text-xs font-semibold text-accent">
+              …and many more flat surfaces
+            </span>
+          </div>
+        </div>
+
+        {/* 6 Substrate Category Taxonomy Cards */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {materials.map((m) => (
-            <article key={m.id} className="overflow-hidden rounded-xl border border-accent-fg/15 bg-accent-fg/5">
+            <article key={m.id} className="overflow-hidden rounded-xl border border-accent-fg/15 bg-accent-fg/5 flex flex-col">
               <div className="aspect-16/10 overflow-hidden bg-accent-fg/10">
                 <img
                   src={m.image}
@@ -257,15 +348,25 @@ function MaterialsSection() {
                   loading="lazy"
                 />
               </div>
-              <div className="p-5">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-accent-fg/60">
-                  {m.highlight}
-                </span>
-                <h3 className="mt-1 font-display text-xl font-bold text-accent-fg">{m.name}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-accent-fg/75">{m.uses}</p>
-                <p className="mt-4 text-xs font-semibold text-accent-fg/90 border-t border-accent-fg/10 pt-3">
-                  {m.from}
-                </p>
+              <div className="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-accent-fg/60">
+                    {m.highlight}
+                  </span>
+                  <h3 className="mt-1 font-display text-xl font-bold text-accent-fg">{m.name}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-accent-fg/75">{m.uses}</p>
+                </div>
+                <div className="mt-4 flex items-center justify-between border-t border-accent-fg/10 pt-3 text-xs">
+                  <span className="font-semibold text-accent-fg/90">{m.from}</span>
+                  <a
+                    href={whatsappHref(`Hello, I would like to enquire about UV printing on ${m.name}.`)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-medium text-accent hover:underline"
+                  >
+                    Quote on WhatsApp →
+                  </a>
+                </div>
               </div>
             </article>
           ))}
@@ -276,41 +377,60 @@ function MaterialsSection() {
 }
 
 function WorkPreview() {
-  const preview = works.slice(0, 4);
+  const preview = works.slice(0, 6);
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-            Real Samples
+            Authentic Studio Proof
           </p>
-          <h2 className="mt-2 font-display text-3xl sm:text-4xl tracking-tight text-fg">
-            Recent Production from Our Studio
+          <h2 className="mt-2 font-display text-3xl sm:text-4xl tracking-tight text-fg font-bold">
+            Recent Production From Our Workshop
           </h2>
+          <p className="mt-2 text-sm text-muted">
+            Direct printing on WPC Doors, Toughened Glass, Cast Acrylic, Teak Wood, MDF, and ACP Sheets.
+          </p>
         </div>
         <Button asChild variant="outline">
           <Link to="/work">
-            Full Gallery (19+ Samples)
+            Full Gallery (27+ Real Samples)
             <ArrowRight className="size-4 ml-1" />
           </Link>
         </Button>
       </div>
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2">
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {preview.map((w) => (
           <figure
             key={w.id}
-            className="overflow-hidden rounded-xl border border-border bg-surface shadow-xs transition-hover hover:border-accent/40"
+            className="group flex flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-xs transition-all hover:border-accent/40 hover:shadow-md"
           >
-            <div className="aspect-4/3 overflow-hidden bg-wash">
-              <img src={w.image} alt={w.title} className="h-full w-full object-cover" loading="lazy" />
-            </div>
-            <figcaption className="p-4 sm:p-5">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-accent">
-                {w.category} · {w.area}
+            <div className="relative aspect-4/3 overflow-hidden bg-wash">
+              <img src={w.image} alt={w.title} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+              <span className="absolute top-2.5 left-2.5 rounded-md bg-fg/80 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-bg backdrop-blur-xs">
+                {w.tag}
               </span>
-              <h3 className="mt-1 font-display text-xl font-bold text-fg">{w.title}</h3>
-              <p className="mt-1 text-xs text-muted">{w.material}</p>
+            </div>
+            <figcaption className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-accent">
+                  {w.category}
+                </span>
+                <h3 className="mt-1 font-display text-lg font-bold text-fg tracking-tight">{w.title}</h3>
+                <p className="mt-1 text-xs text-muted leading-relaxed">{w.material}</p>
+              </div>
+              <div className="mt-3 flex items-center justify-between border-t border-border/60 pt-2.5 text-[11px] text-muted">
+                <span>{w.area}</span>
+                <a
+                  href={whatsappHref(`Hello, I like this work: ${w.title}. Can you share a quote?`)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium text-accent hover:underline"
+                >
+                  Ask Quote →
+                </a>
+              </div>
             </figcaption>
           </figure>
         ))}
@@ -367,7 +487,7 @@ function VisitTeaser() {
           Dwarakanagar, Channasandra, RR Nagar.
         </h2>
         <p className="mt-4 text-sm leading-relaxed text-muted">
-          Located at 8/2 A, 18th Main Road, Dwarakanagar 1st Stage, Channasandra, Rajarajeshwari Nagar. 
+          Located at #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098. 
           Conveniently accessible via Namma Metro <strong>Purple Line</strong> (RR Nagar & Kengeri Metro Stations) and Mysore Road. 
           Serving Channasandra, Dwarakanagar, RR Nagar, Kengeri, Ideal Homes, BHEL Layout, Ullal, Nagarbhavi, Banashankari, and Global Village Tech Park.
         </p>
@@ -384,7 +504,7 @@ function VisitTeaser() {
             <Link to="/visit">Directions & Map</Link>
           </Button>
           <Button asChild variant="outline">
-            <a href={`tel:+${site.phoneE164}`}>Call {site.phoneDisplay}</a>
+            <a href={`tel:+${site.officePhoneE164}`}>Call Office: {site.officePhoneDisplay}</a>
           </Button>
         </div>
       </div>

@@ -31,24 +31,24 @@ function EnquirePage() {
           <div className="flex items-start gap-3">
             <Phone className="size-4 text-accent shrink-0 mt-1" />
             <div className="text-sm">
-              <span className="text-muted block text-xs">Direct Office Line</span>
-              <a className="font-semibold text-fg hover:text-accent" href={`tel:+${site.phoneE164}`}>
-                {site.phoneDisplay}
+              <span className="text-muted block text-xs">Direct Office Call</span>
+              <a className="font-semibold text-fg hover:text-accent" href={`tel:+${site.officePhoneE164}`}>
+                {site.officePhoneDisplay}
               </a>
             </div>
           </div>
 
           <div className="flex items-start gap-3 border-t border-border/60 pt-3">
-            <MessageSquare className="size-4 text-accent shrink-0 mt-1" />
+            <MessageSquare className="size-4 text-emerald-500 shrink-0 mt-1" />
             <div className="text-sm">
               <span className="text-muted block text-xs">WhatsApp Studio Desk</span>
               <a
-                className="font-semibold text-accent hover:underline"
+                className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
                 href={whatsappHref()}
                 target="_blank"
                 rel="noreferrer"
               >
-                Chat on WhatsApp ({site.phoneDisplay})
+                Chat on WhatsApp ({site.whatsappDisplay})
               </a>
             </div>
           </div>
