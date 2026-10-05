@@ -76,7 +76,7 @@ function Hero() {
       <div className="lg:col-span-5">
         <figure className="overflow-hidden rounded-2xl border border-border bg-surface shadow-md">
           <img
-            src="/prints/hero-printer.jpg"
+            src="/prints/flatbed-printer-action.jpg"
             alt="Design Dimensions Industrial UV Flatbed Printer with Active UV Curing"
             className="aspect-4/3 w-full object-cover"
           />

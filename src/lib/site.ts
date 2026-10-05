@@ -347,7 +347,7 @@ export const works = [
     title: "Flatbed UV Machine in Active UV Curing",
     material: "Industrial Multi-Color & Active UV Curing",
     area: "In-House Studio Workshop",
-    image: "/prints/hero-printer.jpg",
+    image: "/prints/flatbed-printer-action.jpg",
     category: "Studio",
     featured: true,
     tag: "Production",
