@@ -20,8 +20,8 @@ async function main() {
   console.log("1. Navigating to https://design-dimensions-uv-printing.vercel.app...");
   await page.goto("https://design-dimensions-uv-printing.vercel.app", { waitUntil: "networkidle" });
 
-  console.log("2. Clicking 'Owner Access' button in footer...");
-  const footerOwnerBtn = page.locator('button:has-text("Owner Access")');
+  console.log("2. Clicking Studio Portal trigger in footer...");
+  const footerOwnerBtn = page.locator('button[aria-label="Studio Portal"], button[title="Studio Portal"], button:has-text("Studio Portal"), button:has-text("Owner Access")').first();
   await footerOwnerBtn.scrollIntoViewIfNeeded();
   await footerOwnerBtn.click();
 

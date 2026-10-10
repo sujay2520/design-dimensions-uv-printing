@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       { title: "Design Dimensions — UV Flatbed Printing Studio | Dwarakanagar, RR Nagar, Bangalore" },
       {
         name: "description",
-        content: "Premier UV printing studio in Dwarakanagar Stage 1, Channasandra, RR Nagar, Bangalore - 560098. Direct high-definition prints on Glass, Acrylic, WPC Doors, Wood & Metal.",
+        content: "Premier UV printing studio in Dwarakanagar 1st Stage, Channasandra, RR Nagar, Bangalore - 560098. Direct high-definition prints on Glass, Acrylic, WPC Doors, Wood & Metal.",
       },
     ],
     links: [
