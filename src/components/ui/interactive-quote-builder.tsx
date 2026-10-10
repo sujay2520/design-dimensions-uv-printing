@@ -49,7 +49,7 @@ export function InteractiveQuoteBuilder() {
     `*Artwork Readiness:* ${artworkState}`,
     notes.trim() ? `*Special Notes / Specs:* ${notes.trim()}` : null,
     "--------------------------------------------------",
-    `*Studio Landmark:* #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098`,
+    `*Studio Landmark:* #8/2 A, 18th Main Road, 1st Stage, Dwarakanagar, Channasandra, Bangalore - 560098`,
     `*Office Call:* +91 94825 58936`,
   ].filter(Boolean);
 

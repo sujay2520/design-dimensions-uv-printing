@@ -65,7 +65,7 @@ const faqs: FAQItem[] = [
     category: "walkin",
     question: "Where is the studio located and what are your operating hours?",
     answer:
-      "We are located at #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098 (near RR Nagar & Kengeri). We are open Monday to Saturday from 10:00 AM to 8:00 PM, and Sunday from 10:30 AM to 3:00 PM (or by WhatsApp appointment). Two-wheeler and street vehicle parking is readily available.",
+      "We are located at #8/2 A, 18th Main Road, 1st Stage, Dwarakanagar, Channasandra, Bangalore - 560098 (near RR Nagar & Kengeri). We are open Monday to Saturday from 10:00 AM to 7:00 PM, and Sunday from 10:00 AM to 2:30 PM. Two-wheeler and vehicle parking is readily available outside the studio.",
   },
 ];
 

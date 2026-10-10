@@ -317,7 +317,7 @@ export function OwnerPortalModal({ isOpen: propIsOpen, onClose: propOnClose }: O
       `*Quantity:* ${quoteQty.trim()} unit(s)`,
       quoteNotes.trim() ? `*Notes:* ${quoteNotes.trim()}` : "",
       "",
-      "*Studio:* #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098",
+      "*Studio:* #8/2 A, 18th Main Road, 1st Stage, Dwarakanagar, Channasandra, Bangalore - 560098",
       `*Office:* ${config.officePhoneDisplay || "+91 94825 58936"}`,
     ].filter(Boolean);
 
@@ -1334,7 +1334,7 @@ export function OwnerPortalModal({ isOpen: propIsOpen, onClose: propOnClose }: O
 
         {/* Footer info */}
         <div className="border-t border-border bg-wash/40 px-6 py-3 flex items-center justify-between text-[11px] text-muted">
-          <span>Design Dimensions · #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098</span>
+          <span>Design Dimensions · #8/2 A, 18th Main Road, 1st Stage, Dwarakanagar, Channasandra, Bangalore - 560098</span>
           <span className="font-mono">Office: +91 94825 58936</span>
         </div>
       </div>
