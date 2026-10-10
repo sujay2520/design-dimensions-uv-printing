@@ -3,6 +3,8 @@ import { ArrowRight, MapPin, Sparkles, CheckCircle, Phone, MessageSquare, Shield
 import { Button } from "@/components/ui/button";
 import { useOwnerConfig } from "@/lib/owner-store";
 import { faqs, materials, processSteps, services, site, works, prestigiousClients, whatsappHref, whyChooseUs, allFlatSurfaces, substrateCategories, canonicalUrl, getLocalBusinessSchema } from "@/lib/site";
+import { WhyChooseUsSection } from "@/components/sections/why-choose-us";
+import { TestimonialsSection } from "@/components/sections/testimonials";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -36,6 +38,7 @@ function Home() {
       <ServicesPreview />
       <MaterialsSection />
       <WorkPreview />
+      <TestimonialsSection />
       <ProcessPreview />
       <VisitTeaser />
       <FaqPreview />
@@ -113,59 +116,7 @@ function Hero() {
   );
 }
 
-function WhyChooseUsSection() {
-  const iconMap: Record<string, React.ReactNode> = {
-    "Active UV Curing": <Sparkles className="size-5 text-accent" />,
-    "Zero Toxic Fumes": <Leaf className="size-5 text-emerald-500" />,
-    "1440 DPI Precision": <Palette className="size-5 text-accent" />,
-    "100% Waterproof": <ShieldCheck className="size-5 text-accent" />,
-    "Fade Proof": <Award className="size-5 text-accent" />,
-    "Fast Local Delivery": <Clock className="size-5 text-accent" />,
-    "Homes & Enterprise": <Building2 className="size-5 text-accent" />,
-  };
 
-  return (
-    <section className="border-b border-border bg-wash/30 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-            Value Proposition
-          </p>
-          <h2 className="mt-2 font-display text-3xl sm:text-4xl tracking-tight text-fg font-bold">
-            Why Choose Us?
-          </h2>
-          <p className="mt-3 text-sm text-muted leading-relaxed">
-            Delivering the most modern & eco-friendly UV printing solutions for homes, commercial interiors, and corporate environments.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {whyChooseUs.map((item) => (
-            <div
-              key={item.title}
-              className="flex flex-col rounded-xl border border-border/80 bg-surface p-5 shadow-xs transition-colors hover:border-accent/40"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="p-2 rounded-lg bg-wash border border-border/60">
-                  {iconMap[item.highlight] ?? <CheckCircle className="size-5 text-accent" />}
-                </span>
-                <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-[11px] font-semibold text-accent">
-                  {item.highlight}
-                </span>
-              </div>
-              <h3 className="font-display text-lg font-bold text-fg tracking-tight">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-muted">
-                {item.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function EnterpriseTrustBar() {
   return (

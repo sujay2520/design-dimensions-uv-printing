@@ -1,10 +1,10 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X, Megaphone } from "lucide-react";
+import { Menu, X, Megaphone, Lock } from "lucide-react";
 import { useState } from "react";
 import { Wordmark } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
 import { nav, site } from "@/lib/site";
-import { useOwnerConfig } from "@/lib/owner-store";
+import { useOwnerConfig, openOwnerModal } from "@/lib/owner-store";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -62,6 +62,15 @@ export function SiteHeader() {
           <Button asChild size="sm">
             <Link to="/enquire">Enquire</Link>
           </Button>
+          <button
+            type="button"
+            onClick={openOwnerModal}
+            title="Studio Owner Portal (Passcode)"
+            aria-label="Studio Owner Portal (Passcode)"
+            className="hidden sm:inline-flex items-center justify-center size-9 rounded-md border border-border text-muted hover:text-accent hover:border-accent hover:bg-wash transition-colors"
+          >
+            <Lock className="size-3.5" />
+          </button>
           <Button
             variant="ghost"
             size="icon"
@@ -96,11 +105,22 @@ export function SiteHeader() {
               href={`https://wa.me/${whatsappE164}`}
               target="_blank"
               rel="noreferrer"
-              className="flex min-h-11 items-center text-base text-accent"
+              className="flex min-h-11 items-center text-base text-emerald-600 dark:text-emerald-400 border-b border-border/70"
               onClick={() => setOpen(false)}
             >
               WhatsApp the studio
             </a>
+            <button
+              type="button"
+              className="flex min-h-11 items-center gap-2 pt-2 text-base font-semibold text-accent text-left"
+              onClick={() => {
+                setOpen(false);
+                openOwnerModal();
+              }}
+            >
+              <Lock className="size-4" />
+              <span>Owner Portal (Passcode)</span>
+            </button>
           </nav>
         </div>
       ) : null}

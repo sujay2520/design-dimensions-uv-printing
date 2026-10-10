@@ -126,3 +126,37 @@ export function useOwnerConfig(): OwnerConfig {
 
   return config;
 }
+
+// Universal Owner Portal Modal State
+let isModalOpen = false;
+const modalListeners = new Set<(open: boolean) => void>();
+
+export function openOwnerModal() {
+  isModalOpen = true;
+  modalListeners.forEach((l) => l(true));
+}
+
+export function closeOwnerModal() {
+  isModalOpen = false;
+  modalListeners.forEach((l) => l(false));
+}
+
+export function useOwnerModal(): [boolean, (open: boolean) => void] {
+  const [isOpen, setIsOpen] = useState(isModalOpen);
+
+  useEffect(() => {
+    const handler = (val: boolean) => setIsOpen(val);
+    modalListeners.add(handler);
+    return () => {
+      modalListeners.delete(handler);
+    };
+  }, []);
+
+  const setOpen = (val: boolean) => {
+    if (val) openOwnerModal();
+    else closeOwnerModal();
+  };
+
+  return [isOpen, setOpen];
+}
+

@@ -3,7 +3,8 @@ import { useMemo, useState } from "react";
 import { works, prestigiousClients, whatsappHref, canonicalUrl } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Sparkles, CheckCircle2 } from "lucide-react";
+import { Sparkles, CheckCircle2, Maximize2 } from "lucide-react";
+import { Lightbox, LightboxItem } from "@/components/ui/lightbox";
 
 export const Route = createFileRoute("/work")({
   component: WorkPage,
@@ -34,11 +35,28 @@ const categories = [
 
 function WorkPage() {
   const [selectedCat, setSelectedCat] = useState<(typeof categories)[number]>("All");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const filteredWorks = useMemo(() => {
     if (selectedCat === "All") return works;
     return works.filter((w) => w.category === selectedCat);
   }, [selectedCat]);
+
+  const lightboxItems: LightboxItem[] = useMemo(() => {
+    return filteredWorks.map((w) => ({
+      src: w.image,
+      title: w.title,
+      category: w.category,
+      substrate: w.material,
+      description: `${w.area} · Direct high-resolution Active UV Curing.`,
+    }));
+  }, [filteredWorks]);
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
@@ -151,12 +169,21 @@ function WorkPage() {
 
       {/* Work Gallery Grid */}
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredWorks.map((w) => (
+        {filteredWorks.map((w, idx) => (
           <figure
             key={w.id}
             className="group flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-all duration-200 hover:border-accent/40 hover:shadow-md"
           >
-            <div className="relative aspect-4/3 overflow-hidden bg-wash">
+            <div
+              className="relative aspect-4/3 overflow-hidden bg-wash cursor-pointer"
+              onClick={() => openLightbox(idx)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") openLightbox(idx);
+              }}
+              aria-label={`Enlarge ${w.title}`}
+            >
               <img
                 src={w.image}
                 alt={w.title}
@@ -166,6 +193,12 @@ function WorkPage() {
               <span className="absolute top-3 left-3 rounded-md bg-fg/80 px-2 py-1 text-[10px] font-medium uppercase tracking-wider text-bg backdrop-blur-xs">
                 {w.tag}
               </span>
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/25 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm">
+                  <Maximize2 className="size-3.5" />
+                  <span>Inspect Print</span>
+                </span>
+              </div>
             </div>
             <figcaption className="flex flex-1 flex-col justify-between p-5">
               <div>
@@ -195,6 +228,15 @@ function WorkPage() {
           </figure>
         ))}
       </div>
+
+      {/* Interactive Fullscreen Lightbox */}
+      <Lightbox
+        items={lightboxItems}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onSelectIndex={setLightboxIndex}
+      />
     </main>
   );
 }

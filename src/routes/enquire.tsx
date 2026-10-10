@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { EnquiryForm } from "@/components/enquiry-form";
+import { InteractiveQuoteBuilder } from "@/components/ui/interactive-quote-builder";
 import { site, whatsappHref } from "@/lib/site";
 import { Phone, MessageSquare, MapPin, Clock, ShieldCheck, Mail } from "lucide-react";
 
@@ -93,8 +94,17 @@ function EnquirePage() {
         </div>
       </div>
 
-      <div className="lg:col-span-7">
-        <EnquiryForm />
+      <div className="lg:col-span-7 space-y-8">
+        <InteractiveQuoteBuilder />
+        
+        <div className="pt-2">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px bg-border flex-1" />
+            <span className="text-xs uppercase tracking-wider text-muted font-semibold">Or Send Direct Message</span>
+            <div className="h-px bg-border flex-1" />
+          </div>
+          <EnquiryForm />
+        </div>
       </div>
     </main>
   );

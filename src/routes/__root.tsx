@@ -6,6 +6,10 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { MobileActionBar } from "@/components/layout/mobile-action-bar";
 import { site } from "@/lib/site";
 import { Toaster } from "sonner";
+import { useEffect } from "react";
+import { OwnerPortalModal } from "@/components/owner/owner-portal-modal";
+import { BackToTop } from "@/components/ui/back-to-top";
+import { openOwnerModal } from "@/lib/owner-store";
 import appCss from "../styles.css?url";
 
 const APP_NAME = site.name;
@@ -49,6 +53,16 @@ export const Route = createRootRoute({
 });
 
 function RootDocument() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const search = window.location.search;
+      const hash = window.location.hash;
+      if (search.includes("owner=1") || search.includes("portal=1") || hash === "#owner") {
+        openOwnerModal();
+      }
+    }
+  }, []);
+
   return (
     <html lang="en" className="antialiased" suppressHydrationWarning>
       <head>
@@ -61,6 +75,8 @@ function RootDocument() {
           <Outlet />
           <SiteFooter />
           <MobileActionBar />
+          <BackToTop />
+          <OwnerPortalModal />
           <Toaster
             position="top-center"
             toastOptions={{

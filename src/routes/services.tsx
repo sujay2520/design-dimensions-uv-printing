@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useOwnerConfig } from "@/lib/owner-store";
 import { materials, services, allFlatSurfaces, substrateCategories, whatsappHref, canonicalUrl } from "@/lib/site";
 import { Layers, ShieldCheck, Clock, CheckCircle } from "lucide-react";
+import { FAQAccordionSection } from "@/components/ui/faq-accordion";
 
 export const Route = createFileRoute("/services")({
   component: ServicesPage,
@@ -212,6 +213,9 @@ function ServicesPage() {
           </article>
         ))}
       </section>
+
+      {/* Interactive Substrate & Process FAQ */}
+      <FAQAccordionSection />
     </main>
   );
 }

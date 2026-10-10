@@ -26,6 +26,7 @@ export const site = {
   plusCode: "VGXC+G2 Bengaluru, Karnataka",
   googleMapsUrl:
     "https://www.google.com/maps/search/?api=1&query=DESIGN+DIMENSIONS+-+UV+PRINTING+8%2F2+A+18TH+MAIN+ROAD+1ST+STAGE+Dwarakanagar+Channasandra+Bengaluru",
+  googleMapsShareUrl: "https://share.google/Avf8u63F9MB2SZhwG",
   mapQuery: "DESIGN DIMENSIONS - UV PRINTING, #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098",
   mapEmbed:
     "https://www.openstreetmap.org/export/embed.html?bbox=77.5020%2C12.9120%2C77.5280%2C12.9320&layer=mapnik&marker=12.9219%2C77.5162",
@@ -114,9 +115,6 @@ export function getLocalBusinessSchema() {
         closes: "15:00",
       },
     ],
-    priceRange: "$$",
-    currenciesAccepted: "INR",
-    paymentAccepted: "Cash, UPI, Bank Transfer",
     areaServed: site.areas.map((area) => ({
       "@type": "AdministrativeArea",
       name: area,

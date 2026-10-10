@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Lock } from "lucide-react";
 import { nav, site, whatsappHref } from "@/lib/site";
-import { useOwnerConfig } from "@/lib/owner-store";
-import { OwnerPortalModal } from "@/components/owner/owner-portal-modal";
+import { useOwnerConfig, openOwnerModal } from "@/lib/owner-store";
 
 export function SiteFooter() {
-  const [ownerOpen, setOwnerOpen] = useState(false);
   const ownerConfig = useOwnerConfig();
 
   const officePhone = ownerConfig.officePhoneDisplay || site.officePhoneDisplay;
@@ -119,7 +116,7 @@ export function SiteFooter() {
             <p>Walk-in consultations & WhatsApp digital proofs.</p>
             <button
               type="button"
-              onClick={() => setOwnerOpen(true)}
+              onClick={openOwnerModal}
               className="text-accent-fg/70 hover:text-accent-fg transition-colors flex items-center gap-1 hover:underline py-2 px-1 min-h-[44px]"
               title="Studio Owner Management Portal"
             >
@@ -129,8 +126,6 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
-
-      <OwnerPortalModal isOpen={ownerOpen} onClose={() => setOwnerOpen(false)} />
     </footer>
   );
 }

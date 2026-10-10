@@ -20,6 +20,7 @@ import {
 import { Button } from "@/components/ui/button";
 import {
   useOwnerConfig,
+  useOwnerModal,
   saveOwnerConfig,
   resetOwnerConfig,
   isOwnerAuthenticated,
@@ -29,16 +30,21 @@ import {
 import { allFlatSurfaces } from "@/lib/site";
 
 interface OwnerPortalModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-export function OwnerPortalModal({ isOpen, onClose }: OwnerPortalModalProps) {
+export function OwnerPortalModal({ isOpen: propIsOpen, onClose: propOnClose }: OwnerPortalModalProps = {}) {
+  const [globalOpen, setGlobalOpen] = useOwnerModal();
+  const isOpen = propIsOpen !== undefined ? propIsOpen : globalOpen;
+  const onClose = propOnClose !== undefined ? propOnClose : () => setGlobalOpen(false);
+
   const config = useOwnerConfig();
   const [authed, setAuthed] = useState(false);
   const [pinInput, setPinInput] = useState("");
   const [pinError, setPinError] = useState(false);
   const [activeTab, setActiveTab] = useState<"contact" | "banner" | "substrates" | "quoter" | "security">("contact");
+
   const [savedNotice, setSavedNotice] = useState<string | null>(null);
 
   // Form states
