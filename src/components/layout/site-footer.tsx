@@ -36,7 +36,7 @@ export function SiteFooter() {
             All quotes and proofs handled via WhatsApp and studio walk-in.
           </p>
           <div className="mt-4 text-xs text-accent-fg/60">
-            <p>Institutional client partner for CSIR-NAL, HAL, PES University, Sobha & Gold's Gym.</p>
+            <p>Selected UV printing work delivered for CSIR-NAL, HAL, PES University, Sobha & Gold's Gym.</p>
           </div>
         </div>
 
@@ -117,11 +117,11 @@ export function SiteFooter() {
             <button
               type="button"
               onClick={openOwnerModal}
-              className="text-accent-fg/70 hover:text-accent-fg transition-colors flex items-center gap-1 hover:underline py-2 px-1 min-h-[44px]"
-              title="Studio Owner Management Portal"
+              className="text-accent-fg/30 hover:text-accent-fg/60 transition-colors p-1"
+              title="Studio Portal"
+              aria-label="Studio Portal"
             >
-              <Lock className="size-3" />
-              <span>Owner Access</span>
+              <Lock className="size-3 opacity-40 hover:opacity-100" />
             </button>
           </div>
         </div>

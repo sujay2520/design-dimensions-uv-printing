@@ -72,7 +72,7 @@ function Hero() {
         </div>
 
         <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
-          At DESIGN DIMENSIONS, we deliver premium-quality UV printing solutions for both interior and exterior applications. Our advanced UV printing technology produces vibrant, durable, scratch-resistant, and long-lasting prints on a wide range of materials, making it easy to create customized products that perfectly suit your requirements.
+          Direct UV flatbed printing on 30+ flat surfaces — Glass, Acrylic, WPC Doors, Wood, and Metal. Instant active UV curing creates vibrant, scratch-resistant, and weather-ready prints tailored to your exact architectural dimensions.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -93,7 +93,7 @@ function Hero() {
         <div className="mt-6 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm text-muted">
           <span className="flex items-center gap-1.5 font-medium text-fg">
             <MapPin className="size-4 text-accent" />
-            #8/2 A, 18th Main Rd, Dwarakanagar Stage 1, Channasandra
+            #8/2 A, 18th Main Rd, Dwarakanagar 1st Stage, Channasandra
           </span>
           <span className="hidden sm:inline text-border">|</span>
           <span className="text-accent font-medium">Eco-Friendly Active UV Curing</span>
@@ -126,7 +126,7 @@ function EnterpriseTrustBar() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
-              Trusted For Government, Corporate & Campus Branding
+              Work Delivered For Government, Corporate & Campus Branding
             </p>
             <p className="text-xs text-muted mt-0.5">
               Precision foundation stones, university directories & corporate displays
@@ -382,7 +382,7 @@ function WorkPreview() {
         </div>
         <Button asChild variant="outline">
           <Link to="/work">
-            Full Gallery (27+ Real Samples)
+            Full Gallery (32+ Workshop Samples)
             <ArrowRight className="size-4 ml-1" />
           </Link>
         </Button>
@@ -476,8 +476,8 @@ function VisitTeaser() {
           Dwarakanagar, Channasandra, RR Nagar.
         </h2>
         <p className="mt-4 text-sm leading-relaxed text-muted">
-          Located at #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098. 
-          Conveniently accessible via Namma Metro <strong>Purple Line</strong> (RR Nagar & Kengeri Metro Stations) and Mysore Road. 
+          Located at #8/2 A, 18th Main Road, Dwarakanagar 1st Stage, Channasandra, Bangalore - 560098. 
+          Conveniently accessible via Mysore Road, RR Nagar Main Road, and Channasandra. 
           Serving Channasandra, Dwarakanagar, RR Nagar, Kengeri, Ideal Homes, BHEL Layout, Ullal, Nagarbhavi, Banashankari, and Global Village Tech Park.
         </p>
         <ul className="mt-6 space-y-2 text-sm text-fg">

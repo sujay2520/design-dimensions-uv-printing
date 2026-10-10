@@ -69,7 +69,7 @@ function EnquirePage() {
             <div className="text-sm">
               <span className="text-muted block text-xs">Studio Location</span>
               <span className="font-medium text-fg">
-                #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098
+                #8/2 A, 18th Main Road, 1st Stage, Dwarakanagar, Channasandra, Bangalore - 560098
               </span>
             </div>
           </div>
@@ -78,7 +78,7 @@ function EnquirePage() {
             <Clock className="size-4 text-accent shrink-0 mt-1" />
             <div className="text-sm">
               <span className="text-muted block text-xs">Working Hours</span>
-              <span className="font-medium text-fg">Mon–Sat 10:00 AM – 8:00 PM</span>
+              <span className="font-medium text-fg">Mon–Sat 10:00 AM – 7:00 PM · Sun 10:00 AM – 2:30 PM</span>
             </div>
           </div>
         </div>

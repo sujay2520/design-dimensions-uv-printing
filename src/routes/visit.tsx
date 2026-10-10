@@ -13,7 +13,7 @@ export const Route = createFileRoute("/visit")({
       { title: "Visit Studio & About Us — Design Dimensions UV Printing, RR Nagar, Bangalore" },
       {
         name: "description",
-        content: "Visit our UV flatbed printing studio at #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098. Walk in with your materials or artwork.",
+        content: "Visit our UV flatbed printing studio at #8/2 A, 18th Main Road, 1st Stage, Dwarakanagar, Channasandra, Bangalore - 560098. Walk in with your materials or artwork.",
       },
     ],
     links: [
@@ -170,19 +170,19 @@ function VisitPage() {
             className="aspect-16/10 w-full object-cover"
           />
           <figcaption className="border-t border-border px-4 py-2 text-xs text-muted">
-            Design Dimensions workshop master showroom wall at Dwarakanagar, Channasandra showcasing direct UV flatbed prints on 30+ flat surfaces.
+            Design Dimensions workshop master showroom wall at Dwarakanagar 1st Stage, Channasandra showcasing direct UV flatbed prints on 30+ flat surfaces.
           </figcaption>
         </figure>
         <div>
           <h2 className="font-display text-3xl tracking-tight text-fg">Route & Transit Directions</h2>
           <ul className="mt-6 space-y-4 text-sm leading-relaxed text-muted">
             <li>
-              <strong className="text-fg block text-base font-semibold">Namma Metro (Purple Line)</strong>
-              Alight at <span className="text-fg font-medium">RR Nagar Metro Station</span> or <span className="text-fg font-medium">Kengeri / Jnanabharathi Station</span> on Mysore Road. Take a quick 5 to 7 minute auto directly to Dwarakanagar 1st Stage, 18th Main Road, Channasandra.
+              <strong className="text-fg block text-base font-semibold">By Road & Vehicle</strong>
+              Easily accessible via Mysore Road, RR Nagar Main Road, Kengeri, and NICE Ring Road. Located at #8/2 A, 18th Main Road, Dwarakanagar 1st Stage, Channasandra. Convenient vehicle and two-wheeler parking available right outside the studio.
             </li>
             <li>
-              <strong className="text-fg block text-base font-semibold">By Road & Vehicle</strong>
-              Easily accessible via Mysore Road, RR Nagar Main Road, Kengeri, and NICE Ring Road. Located at 8/2 A, 18th Main Road, Dwarakanagar 1st Stage. Convenient two-wheeler and street parking available.
+              <strong className="text-fg block text-base font-semibold">Local Landmarks & Access</strong>
+              Located on 18th Main Road in Dwarakanagar 1st Stage, near Channasandra Main Road. Use our Google Maps link or Plus Code (<span className="font-mono text-accent">VGXC+G2</span>) for exact pinpoint navigation.
             </li>
             <li>
               <strong className="text-fg block text-base font-semibold">Service Catchment</strong>

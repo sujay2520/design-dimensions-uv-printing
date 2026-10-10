@@ -50,7 +50,7 @@ function ServicesPage() {
           </h2>
         </div>
         <p className="mt-2 text-xs sm:text-sm text-muted">
-          As showcased on our workshop master showroom wall in Dwarakanagar Stage 1, Channasandra, RR Nagar:
+          As showcased on our workshop master showroom wall in Dwarakanagar 1st Stage, Channasandra, RR Nagar:
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
           {visibleSurfaces.map((surface) => (

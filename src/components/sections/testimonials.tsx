@@ -23,7 +23,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Sneha Hegde",
     role: "Homeowner",
-    location: "Dwarakanagar Stage 1, Channasandra",
+    location: "Dwarakanagar 1st Stage, Channasandra",
     project: "Custom WPC Pooja Room Main Door",
     rating: 5,
     review:
@@ -45,7 +45,7 @@ const testimonials: Testimonial[] = [
     project: "Ceramic Kitchen Backsplash & Acrylic Art",
     rating: 5,
     review:
-      "Direct UV printing on tiles eliminated all need for vinyl wraps. It's 100% waterproof and scratch-proof. WhatsApp coordination and fast digital proof turnarounds made the whole process effortless.",
+      "Direct UV printing on tiles eliminated all need for vinyl wraps. It is durable, water-resistant, and scratch-resistant. WhatsApp coordination and fast digital proof turnarounds made the whole process effortless.",
   },
 ];
 
@@ -59,12 +59,12 @@ export function TestimonialsSection() {
               Client Endorsements
             </p>
             <h2 className="mt-2 font-display text-3xl sm:text-4xl tracking-tight text-fg">
-              Verified Feedback from Bengaluru Makers
+              Client Feedback from Bengaluru Makers
             </h2>
           </div>
           <div className="flex items-center gap-2 text-xs font-medium text-muted">
-            <ShieldCheck className="size-4 text-emerald-600 dark:text-emerald-400" />
-            <span>5.0 / 5.0 Average Rating · Verified Projects</span>
+            <Star className="size-4 text-amber-500 fill-amber-500" />
+            <span>5.0 / 5.0 Client Rating · Commercial & Residential Projects</span>
           </div>
         </div>
 
