@@ -1,23 +1,50 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Lock, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site, whatsappHref } from "@/lib/site";
+import { useOwnerConfig } from "@/lib/owner-store";
+import { OwnerPortalModal } from "@/components/owner/owner-portal-modal";
 
 export const Route = createFileRoute("/visit")({
   component: VisitPage,
   head: () => ({
-    meta: [{ title: "Visit Studio — Design Dimensions UV Printing, RR Nagar" }],
+    meta: [{ title: "Visit Studio & About — Design Dimensions UV Printing, RR Nagar" }],
   }),
 });
 
 function VisitPage() {
+  const [ownerModalOpen, setOwnerModalOpen] = useState(false);
+  const ownerConfig = useOwnerConfig();
+
+  const officePhone = ownerConfig.officePhoneDisplay || site.officePhoneDisplay;
+  const whatsappPhone = ownerConfig.whatsappDisplay || site.whatsappDisplay;
+  const officePhoneE164 = ownerConfig.officePhoneE164 || site.officePhoneE164;
+  const whatsappE164 = ownerConfig.whatsappE164 || site.whatsappE164;
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-        Walk-In Studio
-      </p>
-      <h1 className="mt-3 font-display text-4xl sm:text-5xl tracking-tight text-fg">
-        Dwarakanagar, Channasandra, RR Nagar.
-      </h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            Walk-In Studio & About Us
+          </p>
+          <h1 className="mt-3 font-display text-4xl sm:text-5xl tracking-tight text-fg">
+            Dwarakanagar, Channasandra, RR Nagar.
+          </h1>
+        </div>
+
+        {/* Top-Right Owner Access Trigger */}
+        <button
+          type="button"
+          onClick={() => setOwnerModalOpen(true)}
+          className="inline-flex items-center self-start sm:self-auto gap-2 rounded-xl border border-border/80 bg-surface px-4 py-2 text-xs font-bold text-fg hover:border-accent hover:bg-wash transition-all shadow-sm"
+        >
+          <Lock className="size-3.5 text-accent" />
+          <span>Owner Access (Passcode)</span>
+        </button>
+      </div>
+
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
         {site.kannadaPlace}. A dedicated UV printing studio equipped with industrial flatbed printers. 
         Bring your own substrates, architectural measurements, or artwork on a flash drive/phone. 
@@ -65,14 +92,19 @@ function VisitPage() {
             <div className="mt-3 space-y-2.5 text-sm">
               <div>
                 <span className="text-muted text-xs block">Studio / Office Line:</span>
-                <a className="font-semibold text-accent hover:underline text-base" href={`tel:+${site.officePhoneE164}`}>
-                  {site.officePhoneDisplay}
+                <a className="font-semibold text-accent hover:underline text-base" href={`tel:+${officePhoneE164}`}>
+                  {officePhone}
                 </a>
               </div>
               <div>
                 <span className="text-muted text-xs block">WhatsApp (Quotations & Digital Proofs):</span>
-                <a className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline text-base flex items-center gap-1.5" href={whatsappHref()} target="_blank" rel="noreferrer">
-                  <span>{site.whatsappDisplay}</span>
+                <a
+                  className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline text-base flex items-center gap-1.5"
+                  href={`https://wa.me/${whatsappE164}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>{whatsappPhone}</span>
                   <span className="text-[11px] font-normal bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-full">Direct Chat</span>
                 </a>
               </div>
@@ -83,11 +115,26 @@ function VisitPage() {
                 </a>
               </div>
             </div>
+
             <div className="mt-5 rounded-lg border border-border/80 bg-wash/50 p-3 text-xs text-muted">
               <p className="font-semibold text-fg">Order & Payment Confirmation</p>
               <p className="mt-0.5">{site.termsNote}</p>
             </div>
+
+            {/* Clickable Owner Portal Trigger Inside Contact Card */}
+            <div className="mt-4 pt-3.5 border-t border-border/60 flex items-center justify-between">
+              <span className="text-xs text-muted">Authorized Personnel:</span>
+              <button
+                type="button"
+                onClick={() => setOwnerModalOpen(true)}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-wash/60 px-3 py-1.5 text-xs font-semibold text-accent hover:border-accent hover:bg-wash transition-colors shadow-sm"
+              >
+                <Lock className="size-3.5" />
+                <span>Studio Login (Passcode)</span>
+              </button>
+            </div>
           </div>
+
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild className="flex-1">
               <a
@@ -99,7 +146,7 @@ function VisitPage() {
               </a>
             </Button>
             <Button asChild variant="outline" className="flex-1">
-              <a href={whatsappHref()} target="_blank" rel="noreferrer">
+              <a href={`https://wa.me/${whatsappE164}`} target="_blank" rel="noreferrer">
                 Chat on WhatsApp
               </a>
             </Button>
@@ -148,6 +195,37 @@ function VisitPage() {
           </div>
         </div>
       </section>
+
+      {/* Prominent Studio Owner Control Card at the Bottom of About Page */}
+      <section className="mt-16 rounded-2xl border-2 border-dashed border-accent/30 bg-surface p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
+        <div className="space-y-1.5">
+          <div className="inline-flex items-center gap-2 rounded-md bg-accent/10 px-2.5 py-1 text-xs font-bold text-accent">
+            <ShieldCheck className="size-3.5" />
+            <span>Owner Dashboard Access</span>
+          </div>
+          <h3 className="font-display text-2xl font-bold tracking-tight text-fg">
+            Manage Design Dimensions Website
+          </h3>
+          <p className="text-sm text-muted max-w-xl">
+            Click here to unlock the private owner portal. Enter your passcode to update phone numbers, toggle the holiday notice banner, manage all 28 flat substrates, or generate quick WhatsApp quotes.
+          </p>
+        </div>
+
+        <Button
+          size="lg"
+          onClick={() => setOwnerModalOpen(true)}
+          className="shrink-0 bg-accent text-accent-fg hover:bg-accent/90"
+        >
+          <Lock className="size-4 mr-2" />
+          Click to Enter Passcode
+        </Button>
+      </section>
+
+      {/* Modal Dialog */}
+      <OwnerPortalModal
+        isOpen={ownerModalOpen}
+        onClose={() => setOwnerModalOpen(false)}
+      />
     </main>
   );
 }

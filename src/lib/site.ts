@@ -58,7 +58,7 @@ export const nav = [
   { to: "/services", label: "Services & Materials" },
   { to: "/work", label: "Work Gallery" },
   { to: "/process", label: "How We Print" },
-  { to: "/visit", label: "Visit Studio" },
+  { to: "/visit", label: "About & Studio" },
 ] as const;
 
 export const prestigiousClients = [

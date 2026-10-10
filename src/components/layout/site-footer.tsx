@@ -1,7 +1,19 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { Lock } from "lucide-react";
 import { nav, site, whatsappHref } from "@/lib/site";
+import { useOwnerConfig } from "@/lib/owner-store";
+import { OwnerPortalModal } from "@/components/owner/owner-portal-modal";
 
 export function SiteFooter() {
+  const [ownerOpen, setOwnerOpen] = useState(false);
+  const ownerConfig = useOwnerConfig();
+
+  const officePhone = ownerConfig.officePhoneDisplay || site.officePhoneDisplay;
+  const whatsappPhone = ownerConfig.whatsappDisplay || site.whatsappDisplay;
+  const officePhoneE164 = ownerConfig.officePhoneE164 || site.officePhoneE164;
+  const whatsappE164 = ownerConfig.whatsappE164 || site.whatsappE164;
+
   return (
     <footer className="border-t border-border bg-ink text-accent-fg">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-12">
@@ -64,14 +76,19 @@ export function SiteFooter() {
             <div className="pt-3 space-y-1.5">
               <div>
                 <span className="text-xs text-accent-fg/50 block">Office Call:</span>
-                <a className="font-semibold text-accent-fg hover:underline" href={`tel:+${site.officePhoneE164}`}>
-                  {site.officePhoneDisplay}
+                <a className="font-semibold text-accent-fg hover:underline" href={`tel:+${officePhoneE164}`}>
+                  {officePhone}
                 </a>
               </div>
               <div>
                 <span className="text-xs text-accent-fg/50 block">WhatsApp (Chat & Quotes):</span>
-                <a className="font-semibold text-emerald-400 hover:underline" href={whatsappHref()} target="_blank" rel="noreferrer">
-                  {site.whatsappDisplay}
+                <a
+                  className="font-semibold text-emerald-400 hover:underline"
+                  href={`https://wa.me/${whatsappE164}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {whatsappPhone}
                 </a>
               </div>
             </div>
@@ -84,7 +101,7 @@ export function SiteFooter() {
             <div className="pt-2">
               <a
                 className="inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 text-xs font-semibold text-accent-fg hover:opacity-90"
-                href={whatsappHref()}
+                href={`https://wa.me/${whatsappE164}`}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -94,12 +111,26 @@ export function SiteFooter() {
           </address>
         </div>
       </div>
+
       <div className="border-t border-accent-fg/10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-accent-fg/50 sm:flex-row sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-accent-fg/50 sm:flex-row sm:justify-between sm:items-center sm:px-6">
           <p>© {new Date().getFullYear()} Design Dimensions. RR Nagar, Bengaluru 560098.</p>
-          <p>Walk-in consultations, WhatsApp digital proofs & direct billing.</p>
+          <div className="flex items-center gap-4">
+            <p>Walk-in consultations & WhatsApp digital proofs.</p>
+            <button
+              type="button"
+              onClick={() => setOwnerOpen(true)}
+              className="text-accent-fg/40 hover:text-accent-fg transition-colors flex items-center gap-1 hover:underline"
+              title="Studio Owner Management Portal"
+            >
+              <Lock className="size-3" />
+              <span>Owner Access</span>
+            </button>
+          </div>
         </div>
       </div>
+
+      <OwnerPortalModal isOpen={ownerOpen} onClose={() => setOwnerOpen(false)} />
     </footer>
   );
 }

@@ -1,17 +1,36 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Megaphone } from "lucide-react";
 import { useState } from "react";
 import { Wordmark } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
-import { nav, whatsappHref } from "@/lib/site";
+import { nav, site } from "@/lib/site";
+import { useOwnerConfig } from "@/lib/owner-store";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const ownerConfig = useOwnerConfig();
+
+  const whatsappE164 = ownerConfig.whatsappE164 || site.whatsappE164;
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-bg/90 backdrop-blur-sm">
+      {/* Dynamic Owner Announcement Banner */}
+      {ownerConfig.bannerEnabled && (
+        <div
+          className={cn(
+            "px-4 py-2 text-center text-xs font-semibold flex items-center justify-center gap-2 transition-all",
+            ownerConfig.bannerType === "holiday" && "bg-amber-600 text-amber-50",
+            ownerConfig.bannerType === "rush" && "bg-emerald-600 text-emerald-50",
+            ownerConfig.bannerType === "info" && "bg-accent text-accent-fg"
+          )}
+        >
+          <Megaphone className="size-3.5 shrink-0" />
+          <span>{ownerConfig.bannerText}</span>
+        </div>
+      )}
+
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:h-[4.5rem] sm:px-6">
         <Link to="/" className="min-w-0" onClick={() => setOpen(false)}>
           <Wordmark compact />
@@ -34,7 +53,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Button asChild variant="outline" size="sm" className="hidden sm:inline-flex">
-            <a href={whatsappHref()} target="_blank" rel="noreferrer">
+            <a href={`https://wa.me/${whatsappE164}`} target="_blank" rel="noreferrer">
               WhatsApp
             </a>
           </Button>
@@ -71,7 +90,7 @@ export function SiteHeader() {
               </Link>
             ))}
             <a
-              href={whatsappHref()}
+              href={`https://wa.me/${whatsappE164}`}
               target="_blank"
               rel="noreferrer"
               className="flex min-h-11 items-center text-base text-accent"
