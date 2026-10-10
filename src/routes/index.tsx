@@ -1,9 +1,30 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Sparkles, CheckCircle, Phone, MessageSquare, ShieldCheck, Leaf, Palette, Award, Clock, Building2, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { faqs, materials, processSteps, services, site, works, prestigiousClients, whatsappHref, whyChooseUs, allFlatSurfaces, substrateCategories } from "@/lib/site";
+import { useOwnerConfig } from "@/lib/owner-store";
+import { faqs, materials, processSteps, services, site, works, prestigiousClients, whatsappHref, whyChooseUs, allFlatSurfaces, substrateCategories, canonicalUrl, getLocalBusinessSchema } from "@/lib/site";
 
-export const Route = createFileRoute("/")({ component: Home });
+export const Route = createFileRoute("/")({
+  component: Home,
+  head: () => ({
+    meta: [
+      { title: "Design Dimensions — UV Flatbed Printing Studio | Dwarakanagar, RR Nagar, Bangalore" },
+      {
+        name: "description",
+        content: "Premier UV printing studio in Dwarakanagar Stage 1, Channasandra, RR Nagar, Bangalore - 560098. Direct high-definition prints on Glass, Acrylic, WPC Doors, Wood & Metal.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: canonicalUrl("/") },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(getLocalBusinessSchema()),
+      },
+    ],
+  }),
+});
 
 function Home() {
   return (
@@ -27,7 +48,7 @@ function Hero() {
   return (
     <section className="mx-auto grid max-w-6xl gap-8 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:pb-24 lg:pt-16 items-center">
       <div className="flex flex-col justify-center lg:col-span-7">
-        <div className="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent w-fit">
+        <div className="flex flex-wrap sm:inline-flex items-center gap-2 rounded-full border border-accent/25 bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-normal sm:tracking-[0.2em] text-accent w-fit">
           <span>{site.kannadaPlace}</span>
           <span className="text-border">·</span>
           <span>Dwarakanagar · Channasandra</span>
@@ -51,13 +72,13 @@ function Hero() {
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="shadow-sm bg-emerald-600 hover:bg-emerald-700 text-white">
+          <Button asChild size="lg" className="shadow-sm bg-emerald-600 hover:bg-emerald-700 text-white min-h-[44px]">
             <a href={whatsappHref()} target="_blank" rel="noreferrer" className="flex items-center gap-2">
               <MessageSquare className="size-4" />
               <span>WhatsApp: {site.whatsappDisplay}</span>
             </a>
           </Button>
-          <Button asChild variant="outline" size="lg">
+          <Button asChild variant="outline" size="lg" className="min-h-[44px]">
             <a href={`tel:+${site.officePhoneE164}`} className="flex items-center gap-2">
               <Phone className="size-4 text-accent" />
               <span>Office: {site.officePhoneDisplay}</span>
@@ -70,7 +91,7 @@ function Hero() {
             <MapPin className="size-4 text-accent" />
             #8/2 A, 18th Main Rd, Dwarakanagar Stage 1, Channasandra
           </span>
-          <span className="text-border">|</span>
+          <span className="hidden sm:inline text-border">|</span>
           <span className="text-accent font-medium">Eco-Friendly Active UV Curing</span>
         </div>
       </div>
@@ -289,6 +310,11 @@ function ServicesPreview() {
 }
 
 function MaterialsSection() {
+  const ownerConfig = useOwnerConfig();
+  const visibleSurfaces = allFlatSurfaces.filter(
+    (s) => !ownerConfig.hiddenSubstrates?.includes(s)
+  );
+
   return (
     <section className="bg-ink text-accent-fg py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -305,7 +331,7 @@ function MaterialsSection() {
               Vibrant, scratch-resistant, water-resistant, and engineered for both interior aesthetics and exterior durability.
             </p>
           </div>
-          <Button asChild className="bg-accent text-accent-fg hover:opacity-90 shrink-0">
+          <Button asChild className="bg-accent text-accent-fg hover:opacity-90 shrink-0 min-h-[44px]">
             <a href={whatsappHref("Hello Design Dimensions, I want to check UV printing feasibility for my material.")} target="_blank" rel="noreferrer">
               Ask About Your Material
             </a>
@@ -315,22 +341,22 @@ function MaterialsSection() {
         {/* 28 Substrates Interactive Cloud */}
         <div className="mt-10 rounded-2xl border border-accent-fg/15 bg-accent-fg/5 p-6 sm:p-8">
           <div className="flex items-center gap-2 mb-4">
-            <Layers className="size-4 text-accent" />
+            <Layers className="size-4 text-emerald-400" />
             <span className="text-xs font-semibold uppercase tracking-wider text-accent-fg/80">
               We Print On (All Flat Surfaces):
             </span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {allFlatSurfaces.map((s) => (
+            {visibleSurfaces.map((s) => (
               <span
                 key={s}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-accent-fg/15 bg-accent-fg/5 px-3 py-1.5 text-xs font-medium text-accent-fg hover:border-accent hover:bg-accent-fg/10 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-accent-fg/15 bg-accent-fg/5 px-3 py-1.5 text-xs font-medium text-accent-fg hover:border-emerald-400 hover:bg-accent-fg/10 transition-colors"
               >
-                <CheckCircle className="size-3 text-accent" />
+                <CheckCircle className="size-3 text-emerald-400" />
                 {s}
               </span>
             ))}
-            <span className="inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/20 px-3 py-1.5 text-xs font-semibold text-accent">
+            <span className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-500/40 bg-emerald-500/20 px-3 py-1.5 text-xs font-semibold text-emerald-300">
               …and many more flat surfaces
             </span>
           </div>
@@ -362,7 +388,8 @@ function MaterialsSection() {
                     href={whatsappHref(`Hello, I would like to enquire about UV printing on ${m.name}.`)}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-medium text-accent hover:underline"
+                    aria-label={`Inquire about ${m.name} UV printing on WhatsApp`}
+                    className="font-medium text-emerald-400 hover:text-emerald-300 hover:underline min-h-11 inline-flex items-center"
                   >
                     Quote on WhatsApp →
                   </a>
@@ -426,7 +453,8 @@ function WorkPreview() {
                   href={whatsappHref(`Hello, I like this work: ${w.title}. Can you share a quote?`)}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-medium text-accent hover:underline"
+                  aria-label={`Ask quote for ${w.title} on WhatsApp`}
+                  className="font-medium text-accent hover:underline py-1.5 px-2 -my-1.5 -mr-2 rounded inline-flex items-center min-h-[36px]"
                 >
                   Ask Quote →
                 </a>

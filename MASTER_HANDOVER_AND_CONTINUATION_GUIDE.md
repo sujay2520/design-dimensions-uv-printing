@@ -64,20 +64,41 @@ The business owner has a private, password-protected admin dashboard embedded di
    - Custom banner text input (e.g. "We are open on Sundays by prior WhatsApp appointment.")
    - Banner urgency style: Teal (General Info), Amber (Holiday Notice), or Emerald (Rush Delivery).
    - Rendered globally at the very top of `SiteHeader` across all routes.
+   - Protected with an empty/whitespace guard (`ownerConfig.bannerEnabled && Boolean(ownerConfig.bannerText?.trim())`).
 3. **28 Substrates Catalog Manager:**
    - Live search filter.
    - Individual **Active / Inactive toggle buttons** for each of the 28 flat substrates.
-   - Hiding a substrate instantly filters it out from the public customer view without deleting data.
+   - Hiding a substrate instantly filters it out from the public customer view in real time (`index.tsx` and `services.tsx` consume `useOwnerConfig()`).
 4. **WhatsApp Quoter:**
    - Customer Name, Substrate selector, Dimensions, Quantity, and Special Job Notes.
-   - One-tap button: `Open Quote on WhatsApp (+91 93432 22266)` which immediately formats and deep-links to WhatsApp with pre-filled specs.
+   - One-tap button: `Open Quote on WhatsApp (+91 93432 22266)` which immediately formats and deep-links to WhatsApp with fully URI-encoded parameters.
 5. **Security & PIN:**
    - Change passcode.
    - "Restore Factory Defaults" button to wipe customizations and restore standard studio configuration.
 
 ---
 
-## 4. THE 28 FLAT SUBSTRATES TAXONOMY
+## 4. MOBILE UX, ACCESSIBILITY & PERFORMANCE COMPLIANCE
+Following a comprehensive multi-agent audit across 390px mobile viewports:
+1. **Global Mobile Action Bar (`src/components/layout/mobile-action-bar.tsx`):**
+   - Fixed sticky bottom dock on mobile (`<sm`), presenting thumb-friendly 44px touch targets:
+     - **[ Call Studio ]** (`tel:+919482558936`)
+     - **[ WhatsApp Quote ]** (`wa.me/919343222266`)
+   - Fully reactive to owner store overrides and respects mobile safe-area insets (`env(safe-area-inset-bottom)`).
+2. **WCAG 2.1 AA Contrast Ratios:**
+   - Fixed the dark `bg-ink` section in `src/routes/index.tsx` by upgrading dark teal accents to high-visibility emerald tones (`text-emerald-400` and `text-emerald-300`), achieving an >8:1 contrast ratio.
+   - Upgraded light-surface WhatsApp links to `text-emerald-700` (`#047857`) for >4.5:1 contrast.
+   - Upgraded footer owner link to `text-accent-fg/70` for >6:1 contrast.
+3. **Screen Reader & Keyboard Accessibility:**
+   - Owner Modal now includes `role="dialog"`, `aria-modal="true"`, `aria-labelledby="owner-modal-title"`.
+   - Global `Escape` key listener closes the modal instantly.
+   - Clicking the backdrop dismisses the dialog.
+   - Distinct `aria-label` attributes on navigation landmarks (`Main navigation` vs `Mobile navigation`) and card quote links.
+   - Decorative Wordmark emblem marked `aria-hidden="true"` to prevent redundant screen reader announcements.
+
+---
+
+## 5. THE 28 FLAT SUBSTRATES TAXONOMY
 The platform models all 28 flat substrates categorized into 6 core industrial groups in `src/lib/site.ts`:
 
 1. **Doors & Panels:** WPC Doors, PVC, Flexiply, Plywood, Laminates, Fiberglass
@@ -91,6 +112,7 @@ The platform models all 28 flat substrates categorized into 6 core industrial gr
 All authentic studio and sample images are preserved in `public/prints/`:
 - `workshop-sample-wall.jpg` (Full showroom master sample wall)
 - `uv-printer-industrial-bed.jpg` (Industrial flatbed UV printer and active carriage)
+- `uv-printer-active-curing-head.jpg` (Industrial UV print carriage and active curing head)
 - `uv-wpc-doors-showroom.jpg` (Complete carved WPC waterproof door panels)
 - `uv-wardrobe-tfn-sliding-glass.jpg` (Sliding wardrobe toughened glass with white ink)
 - `uv-acrylic-cast-sheet.jpg` (High-gloss acrylic with flame-polished edges)
@@ -98,11 +120,12 @@ All authentic studio and sample images are preserved in `public/prints/`:
 - `uv-acp-exterior-sheet.jpg` (Weather-proof exterior ACP facade panels)
 - `uv-krishna-livingroom-backdrop.jpg` (Fine art canvas & divine living room mural)
 - `kamadhenu-door.jpg` (Traditional pooja door with 3D embossed gold reliefs)
-- `uv-flatbed-printer-active-curing.jpg` (Active UV curing lamp head in action)
+- `special-dandelion-glass-shelf.jpg` (Dandelion and architectural glass UV print display shelf)
+- `cards.jpg` (Visiting card acrylic and composite samples)
 
 ---
 
-## 5. CODEBASE MAP & ROUTING STRUCTURE
+## 6. CODEBASE MAP & ROUTING STRUCTURE
 
 ```text
 c:\Users\jarvis\Desktop\Builds\Design Dimensions\
@@ -117,7 +140,8 @@ c:\Users\jarvis\Desktop\Builds\Design Dimensions\
 │   ├── components/
 │   │   ├── layout/
 │   │   │   ├── site-header.tsx    # Header, navigation, and dynamic owner notice banner
-│   │   │   └── site-footer.tsx    # Footer with address, WhatsApp callouts & Owner Access link
+│   │   │   ├── site-footer.tsx    # Footer with address, WhatsApp callouts & Owner Access link
+│   │   │   └── mobile-action-bar.tsx # Sticky bottom dock for mobile one-tap call & WhatsApp
 │   │   ├── owner/
 │   │   │   └── owner-portal-modal.tsx  # In-browser Owner Control Panel with PIN authentication
 │   │   ├── brand/
@@ -129,7 +153,7 @@ c:\Users\jarvis\Desktop\Builds\Design Dimensions\
 │   │   ├── owner-store.ts         # Reactive localStorage store for owner configurations
 │   │   └── utils.ts               # Class merging utilities (cn)
 │   └── routes/
-│       ├── __root.tsx             # Root document shell with header, footer & providers
+│       ├── __root.tsx             # Root document shell with header, footer, mobile bar & providers
 │       ├── index.tsx              # Home page (Hero, 28 substrates grid, trust bar, samples)
 │       ├── services.tsx           # Services & 28-material breakdown with category filters
 │       ├── work.tsx               # Authentic work gallery with real workshop prints
@@ -140,7 +164,7 @@ c:\Users\jarvis\Desktop\Builds\Design Dimensions\
 
 ---
 
-## 6. WORKFLOWS & ROUTINE COMMANDS
+## 7. WORKFLOWS & ROUTINE COMMANDS
 
 ### How to Run Locally:
 ```bash
@@ -170,7 +194,7 @@ git push origin main
 
 ---
 
-## 7. OWNER HANDOFF SUMMARY CHEAT SHEET
+## 8. OWNER HANDOFF SUMMARY CHEAT SHEET
 Share this directly with the shop owner:
 
 1. **How to open the Control Panel:**

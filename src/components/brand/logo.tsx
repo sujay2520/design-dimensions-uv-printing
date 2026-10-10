@@ -17,7 +17,8 @@ export function Wordmark({ compact = false }: { compact?: boolean }) {
     <span className="flex items-center gap-3 text-fg">
       <img
         src="/brand/logo-transparent.png"
-        alt="Design Dimensions Emblem"
+        alt=""
+        aria-hidden="true"
         className="size-9 object-contain sm:size-10 shrink-0"
       />
       <span className="leading-tight">

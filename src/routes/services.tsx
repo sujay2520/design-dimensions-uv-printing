@@ -1,16 +1,31 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { materials, services, allFlatSurfaces, substrateCategories, whatsappHref } from "@/lib/site";
+import { useOwnerConfig } from "@/lib/owner-store";
+import { materials, services, allFlatSurfaces, substrateCategories, whatsappHref, canonicalUrl } from "@/lib/site";
 import { Layers, ShieldCheck, Clock, CheckCircle } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
   component: ServicesPage,
   head: () => ({
-    meta: [{ title: "UV Printing Services & Substrates — Design Dimensions, RR Nagar" }],
+    meta: [
+      { title: "UV Printing Services & 28 Substrates — Design Dimensions, Bangalore" },
+      {
+        name: "description",
+        content: "Explore 28+ flat substrates for industrial UV printing: Toughened Glass, Cast Acrylic, WPC Doors, Wood/MDF, ACP Sheets & Devotional Panels in Bangalore - 560098.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: canonicalUrl("/services") },
+    ],
   }),
 });
 
 function ServicesPage() {
+  const ownerConfig = useOwnerConfig();
+  const visibleSurfaces = allFlatSurfaces.filter(
+    (s) => !ownerConfig.hiddenSubstrates?.includes(s)
+  );
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
@@ -37,7 +52,7 @@ function ServicesPage() {
           As showcased on our workshop master showroom wall in Dwarakanagar Stage 1, Channasandra, RR Nagar:
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
-          {allFlatSurfaces.map((surface) => (
+          {visibleSurfaces.map((surface) => (
             <span
               key={surface}
               className="inline-flex items-center gap-1.5 rounded-lg border border-border/80 bg-wash/60 px-3 py-1.5 text-xs font-medium text-fg transition-colors hover:border-accent hover:bg-surface"
@@ -53,24 +68,31 @@ function ServicesPage() {
 
         {/* Categorized Taxonomies */}
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 border-t border-border/60 pt-6">
-          {substrateCategories.map((cat) => (
-            <div key={cat.category} className="rounded-xl border border-border/70 bg-wash/40 p-4">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-display text-sm font-bold text-fg">{cat.category}</h3>
-                <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-semibold text-accent">
-                  {cat.badge}
-                </span>
-              </div>
-              <p className="text-[11px] text-muted mb-3">{cat.description}</p>
-              <div className="flex flex-wrap gap-1">
-                {cat.substrates.map((sub) => (
-                  <span key={sub} className="rounded-md border border-border/60 bg-surface px-2 py-0.5 text-[10px] text-fg">
-                    {sub}
+          {substrateCategories.map((cat) => {
+            const catVisibleSubstrates = cat.substrates.filter(
+              (sub) => !ownerConfig.hiddenSubstrates?.includes(sub)
+            );
+            if (catVisibleSubstrates.length === 0) return null;
+
+            return (
+              <div key={cat.category} className="rounded-xl border border-border/70 bg-wash/40 p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-display text-sm font-bold text-fg">{cat.category}</h3>
+                  <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-semibold text-accent">
+                    {cat.badge}
                   </span>
-                ))}
+                </div>
+                <p className="text-[11px] text-muted mb-3">{cat.description}</p>
+                <div className="flex flex-wrap gap-1">
+                  {catVisibleSubstrates.map((sub) => (
+                    <span key={sub} className="rounded-md border border-border/60 bg-surface px-2 py-0.5 text-[10px] text-fg">
+                      {sub}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -105,7 +127,8 @@ function ServicesPage() {
                     href={whatsappHref(`Hello, I would like to enquire about UV printing on ${m.name}.`)}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-medium text-accent hover:underline"
+                    aria-label={`Inquire about ${m.name} UV printing on WhatsApp`}
+                    className="font-medium text-accent hover:underline py-1.5 px-2 -my-1.5 -mr-2 rounded inline-flex items-center min-h-[36px]"
                   >
                     Inquire on WhatsApp →
                   </a>

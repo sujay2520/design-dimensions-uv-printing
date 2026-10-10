@@ -69,8 +69,16 @@ export function OwnerPortalModal({ isOpen, onClose }: OwnerPortalModalProps) {
       setBannerEnabled(config.bannerEnabled);
       setBannerText(config.bannerText);
       setBannerType(config.bannerType);
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          onClose();
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
     }
-  }, [isOpen, config]);
+  }, [isOpen, config, onClose]);
 
   if (!isOpen) return null;
 
@@ -145,21 +153,32 @@ export function OwnerPortalModal({ isOpen, onClose }: OwnerPortalModalProps) {
 
   const handleGenerateQuoteWhatsApp = () => {
     const rawNumber = config.whatsappE164 || "919343222266";
-    const text = `*Design Dimensions — Official Quote Enquiry*%0A%0A` +
-      `*Client:* ${quoteClient || "Walk-In / Phone Customer"}%0A` +
-      `*Material:* ${quoteSubstrate}%0A` +
-      `*Dimensions:* ${quoteDims}%0A` +
-      `*Quantity:* ${quoteQty} unit(s)%0A` +
-      (quoteNotes ? `*Notes:* ${quoteNotes}%0A` : "") +
-      `%0A*Studio:* #8/2 A, 18th Main Rd, Channasandra, Bangalore - 560098%0A` +
-      `*Office:* ${config.officePhoneDisplay}`;
+    const lines = [
+      "*Design Dimensions — Official Quote Enquiry*",
+      "",
+      `*Client:* ${quoteClient.trim() || "Walk-In / Phone Customer"}`,
+      `*Material:* ${quoteSubstrate}`,
+      `*Dimensions:* ${quoteDims.trim()}`,
+      `*Quantity:* ${quoteQty.trim()} unit(s)`,
+      quoteNotes.trim() ? `*Notes:* ${quoteNotes.trim()}` : "",
+      "",
+      "*Studio:* #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098",
+      `*Office:* ${config.officePhoneDisplay || "+91 94825 58936"}`,
+    ].filter(Boolean);
 
-    window.open(`https://wa.me/${rawNumber}?text=${text}`, "_blank");
+    const encoded = encodeURIComponent(lines.join("\n"));
+    window.open(`https://wa.me/${rawNumber}?text=${encoded}`, "_blank");
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+      onClick={onClose}
+    >
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="owner-modal-title"
         className="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl text-fg max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
@@ -170,7 +189,7 @@ export function OwnerPortalModal({ isOpen, onClose }: OwnerPortalModalProps) {
               {authed ? <Unlock className="size-4" /> : <Lock className="size-4" />}
             </div>
             <div>
-              <h2 className="text-base font-bold tracking-tight">Studio Owner Control Panel</h2>
+              <h2 id="owner-modal-title" className="text-base font-bold tracking-tight">Studio Owner Control Panel</h2>
               <p className="text-xs text-muted">
                 {authed ? "Logged In · Live Browser Storage Controls" : "Password-Protected Owner Verification"}
               </p>
@@ -224,6 +243,7 @@ export function OwnerPortalModal({ isOpen, onClose }: OwnerPortalModalProps) {
                     type="password"
                     autoFocus
                     placeholder="Enter passcode (e.g. 948255)"
+                    aria-label="Enter owner passcode"
                     value={pinInput}
                     onChange={(e) => {
                       setPinInput(e.target.value);
@@ -380,6 +400,7 @@ export function OwnerPortalModal({ isOpen, onClose }: OwnerPortalModalProps) {
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
+                        aria-label="Toggle announcement banner"
                         checked={bannerEnabled}
                         onChange={(e) => setBannerEnabled(e.target.checked)}
                         className="sr-only peer"
@@ -429,6 +450,7 @@ export function OwnerPortalModal({ isOpen, onClose }: OwnerPortalModalProps) {
                     <input
                       type="text"
                       placeholder="Search substrate (e.g. WPC, Acrylic, Glass)..."
+                      aria-label="Search substrates by name"
                       value={substrateSearch}
                       onChange={(e) => setSubstrateSearch(e.target.value)}
                       className="flex-1 rounded-lg border border-border bg-bg px-3 py-2 text-sm text-fg focus:ring-1 focus:ring-accent"
@@ -613,8 +635,8 @@ export function OwnerPortalModal({ isOpen, onClose }: OwnerPortalModalProps) {
 
         {/* Footer info */}
         <div className="border-t border-border bg-wash/40 px-6 py-3 flex items-center justify-between text-[11px] text-muted">
-          <span>Design Dimensions · #8/2 A, 18th Main Rd, Channasandra, Bangalore 560098</span>
-          <span className="font-mono">Office: 9482558936</span>
+          <span>Design Dimensions · #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098</span>
+          <span className="font-mono">Office: +91 94825 58936</span>
         </div>
       </div>
     </div>

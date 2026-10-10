@@ -3,6 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { MobileActionBar } from "@/components/layout/mobile-action-bar";
 import { site } from "@/lib/site";
 import { Toaster } from "sonner";
 import appCss from "../styles.css?url";
@@ -17,12 +18,18 @@ export const Route = createRootRoute({
       { title: `${APP_NAME} — UV Printing, RR Nagar` },
       {
         name: "description",
-        content: site.description,
+        content: site.metaDescription,
       },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
       { name: "theme-color", content: "#1A5C5A" },
+      { name: "geo.region", content: "IN-KA" },
+      { name: "geo.placename", content: "Bengaluru" },
+      { name: "geo.position", content: `${site.geo.latitude};${site.geo.longitude}` },
+      { name: "ICBM", content: `${site.geo.latitude}, ${site.geo.longitude}` },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "canonical", href: site.url },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "preconnect",
@@ -47,12 +54,13 @@ function RootDocument() {
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-dvh bg-bg font-sans text-fg">
+      <body className="min-h-dvh bg-bg font-sans text-fg pb-16 sm:pb-0">
         <PreviewHostBridge />
         <AuthProvider>
           <SiteHeader />
           <Outlet />
           <SiteFooter />
+          <MobileActionBar />
           <Toaster
             position="top-center"
             toastOptions={{

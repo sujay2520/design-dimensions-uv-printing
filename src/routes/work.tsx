@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { works, prestigiousClients, whatsappHref } from "@/lib/site";
+import { works, prestigiousClients, whatsappHref, canonicalUrl } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Sparkles, CheckCircle2 } from "lucide-react";
@@ -8,7 +8,16 @@ import { Sparkles, CheckCircle2 } from "lucide-react";
 export const Route = createFileRoute("/work")({
   component: WorkPage,
   head: () => ({
-    meta: [{ title: "Work & Portfolio — Design Dimensions UV Printing, RR Nagar" }],
+    meta: [
+      { title: "Portfolio & Showcase — Design Dimensions UV Printing, RR Nagar" },
+      {
+        name: "description",
+        content: "View authentic UV printing projects: WPC entrance doors, sliding wardrobe glass, 3D acrylic signs, and CSIR-NAL inauguration plaques crafted in Bengaluru.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: canonicalUrl("/work") },
+    ],
   }),
 });
 
@@ -122,14 +131,14 @@ function WorkPage() {
       </section>
 
       {/* Filter Tabs */}
-      <div className="mt-12 flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+      <div className="mt-12 flex gap-2 overflow-x-auto pb-2 scrollbar-none [mask-image:linear-gradient(to_right,black_90%,transparent_100%)]">
         {categories.map((cat) => (
           <button
             key={cat}
             type="button"
             onClick={() => setSelectedCat(cat)}
             className={cn(
-              "h-10 shrink-0 rounded-full border px-5 text-sm font-medium transition-colors",
+              "h-11 shrink-0 rounded-full border px-5 text-sm font-medium transition-colors min-h-[44px]",
               selectedCat === cat
                 ? "border-accent bg-accent text-accent-fg"
                 : "border-border bg-surface text-fg hover:border-accent/50",
@@ -170,13 +179,14 @@ function WorkPage() {
                   {w.material}
                 </p>
               </div>
-              <div className="mt-4 flex items-center justify-between border-t border-border/60 pt-3 text-[11px] text-subtle">
+              <div className="mt-4 flex items-center justify-between border-t border-border/60 pt-3 text-[11px] text-muted">
                 <span>{w.area}</span>
                 <a
                   href={whatsappHref(`Hello Design Dimensions, I am interested in work similar to '${w.title}'.`)}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-medium text-accent hover:underline"
+                  aria-label={`Ask quote for ${w.title} on WhatsApp`}
+                  className="font-medium text-accent hover:underline py-1.5 px-2 -my-1.5 -mr-2 rounded inline-flex items-center min-h-[36px]"
                 >
                   Ask Quote →
                 </a>

@@ -43,7 +43,7 @@ function EnquirePage() {
             <div className="text-sm">
               <span className="text-muted block text-xs">WhatsApp Studio Desk</span>
               <a
-                className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+                className="font-semibold text-emerald-700 dark:text-emerald-400 hover:underline py-1 inline-block min-h-[36px]"
                 href={whatsappHref()}
                 target="_blank"
                 rel="noreferrer"
@@ -68,7 +68,7 @@ function EnquirePage() {
             <div className="text-sm">
               <span className="text-muted block text-xs">Studio Location</span>
               <span className="font-medium text-fg">
-                {site.addressLines[0]}, {site.addressLines[1]}, Bengaluru 560098
+                #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098
               </span>
             </div>
           </div>

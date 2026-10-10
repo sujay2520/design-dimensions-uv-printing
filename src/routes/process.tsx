@@ -1,11 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { faqs, fileSpecs, processSteps } from "@/lib/site";
+import { faqs, fileSpecs, processSteps, canonicalUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/process")({
   component: ProcessPage,
   head: () => ({
-    meta: [{ title: "How we print — Design Dimensions, RR Nagar" }],
+    meta: [
+      { title: "How We Print: Precision UV Flatbed Workflow — Design Dimensions" },
+      {
+        name: "description",
+        content: "From file submission and 300 DPI pre-flight to active UV lamp curing and finishing. Learn about our precision printing process in Dwarakanagar, Bangalore.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: canonicalUrl("/process") },
+    ],
   }),
 });
 

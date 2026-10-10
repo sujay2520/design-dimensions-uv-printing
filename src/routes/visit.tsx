@@ -2,14 +2,23 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Lock, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { site, whatsappHref } from "@/lib/site";
+import { site, whatsappHref, canonicalUrl } from "@/lib/site";
 import { useOwnerConfig } from "@/lib/owner-store";
 import { OwnerPortalModal } from "@/components/owner/owner-portal-modal";
 
 export const Route = createFileRoute("/visit")({
   component: VisitPage,
   head: () => ({
-    meta: [{ title: "Visit Studio & About — Design Dimensions UV Printing, RR Nagar" }],
+    meta: [
+      { title: "Visit Studio & About Us — Design Dimensions UV Printing, RR Nagar, Bangalore" },
+      {
+        name: "description",
+        content: "Visit our UV flatbed printing studio at #8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra, Bangalore - 560098. Walk in with your materials or artwork.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: canonicalUrl("/visit") },
+    ],
   }),
 });
 
@@ -99,13 +108,13 @@ function VisitPage() {
               <div>
                 <span className="text-muted text-xs block">WhatsApp (Quotations & Digital Proofs):</span>
                 <a
-                  className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline text-base flex items-center gap-1.5"
+                  className="font-semibold text-emerald-700 dark:text-emerald-400 hover:underline text-base flex items-center gap-1.5"
                   href={`https://wa.me/${whatsappE164}`}
                   target="_blank"
                   rel="noreferrer"
                 >
                   <span>{whatsappPhone}</span>
-                  <span className="text-[11px] font-normal bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-full">Direct Chat</span>
+                  <span className="text-[11px] font-normal bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded-full">Direct Chat</span>
                 </a>
               </div>
               <div className="pt-1">
@@ -203,9 +212,9 @@ function VisitPage() {
             <ShieldCheck className="size-3.5" />
             <span>Owner Dashboard Access</span>
           </div>
-          <h3 className="font-display text-2xl font-bold tracking-tight text-fg">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-fg">
             Manage Design Dimensions Website
-          </h3>
+          </h2>
           <p className="text-sm text-muted max-w-xl">
             Click here to unlock the private owner portal. Enter your passcode to update phone numbers, toggle the holiday notice banner, manage all 28 flat substrates, or generate quick WhatsApp quotes.
           </p>

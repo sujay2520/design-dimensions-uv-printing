@@ -51,7 +51,78 @@ export const site = {
     "Global Village Tech Park",
     "BEML Layout",
   ],
+  url: "https://design-dimensions-uv-printing.vercel.app",
+  metaDescription:
+    "Design Dimensions: Premier UV flatbed printing in Dwarakanagar, Channasandra, RR Nagar, Bangalore - 560098. Direct high-definition printing on Glass, Acrylic, WPC Doors, Wood, and Metal.",
+  postalCode: "560098",
+  state: "Karnataka",
+  country: "India",
+  countryCode: "IN",
+  geo: {
+    latitude: 12.9219,
+    longitude: 77.5162,
+  },
 } as const;
+
+export function canonicalUrl(path: string = "/"): string {
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  return `${site.url}${cleanPath === "/" ? "" : cleanPath}`;
+}
+
+export function getLocalBusinessSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${site.url}/#localbusiness`,
+    name: "Design Dimensions",
+    alternateName: "Design Dimensions - UV Printing",
+    description: site.description,
+    url: site.url,
+    telephone: site.officePhoneDisplay,
+    email: site.email,
+    image: [
+      `${site.url}/og.jpg`,
+      `${site.url}/prints/uv-flatbed-printer-active-curing.jpg`,
+      `${site.url}/prints/workshop-sample-wall.jpg`,
+    ],
+    logo: `${site.url}/brand/logo-transparent.png`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "#8/2 A, 18th Main Road, Dwarakanagar Stage 1, Channasandra",
+      addressLocality: "Bengaluru",
+      addressRegion: "Karnataka",
+      postalCode: "560098",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: site.geo.latitude,
+      longitude: site.geo.longitude,
+    },
+    hasMap: site.googleMapsUrl,
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "10:00",
+        closes: "20:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Sunday",
+        opens: "10:30",
+        closes: "15:00",
+      },
+    ],
+    priceRange: "$$",
+    currenciesAccepted: "INR",
+    paymentAccepted: "Cash, UPI, Bank Transfer",
+    areaServed: site.areas.map((area) => ({
+      "@type": "AdministrativeArea",
+      name: area,
+    })),
+  };
+}
 
 export const nav = [
   { to: "/", label: "Home" },
@@ -226,7 +297,7 @@ export const substrateCategories = [
   },
   {
     category: "Specialty & Niche",
-    substrates: ["Sunpack Sheets", "Paper Products", "Books", "Ceramic Tiles"],
+    substrates: ["Sunpack Sheets", "Paper Products", "Books", "Ceramic"],
     description: "Hardbound book covers, Spot UV business cards, prototype presentation packaging, and ceramic table tops.",
     badge: "Bespoke",
   },
@@ -330,7 +401,7 @@ export const services = [
     body: "Distinguish your cards with tactile, raised UV varnish on your logo or typography. Minimum practical runs starting from 300, 500 to 1,000 cards. Full artwork review via WhatsApp before press.",
     typical: "3–5 working days",
     from: "Custom Quote on WhatsApp",
-    image: "/prints/standee-banner.jpg",
+    image: "/prints/cards.jpg",
     group: "Paper",
   },
   {

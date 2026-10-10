@@ -17,8 +17,10 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-bg/90 backdrop-blur-sm">
       {/* Dynamic Owner Announcement Banner */}
-      {ownerConfig.bannerEnabled && (
+      {ownerConfig.bannerEnabled && Boolean(ownerConfig.bannerText?.trim()) && (
         <div
+          role="status"
+          aria-live="polite"
           className={cn(
             "px-4 py-2 text-center text-xs font-semibold flex items-center justify-center gap-2 transition-all",
             ownerConfig.bannerType === "holiday" && "bg-amber-600 text-amber-50",
@@ -26,7 +28,7 @@ export function SiteHeader() {
             ownerConfig.bannerType === "info" && "bg-accent text-accent-fg"
           )}
         >
-          <Megaphone className="size-3.5 shrink-0" />
+          <Megaphone className="size-3.5 shrink-0" aria-hidden="true" />
           <span>{ownerConfig.bannerText}</span>
         </div>
       )}
@@ -36,7 +38,7 @@ export function SiteHeader() {
           <Wordmark compact />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex">
           {nav.map((item) => (
             <Link
               key={item.to}
@@ -65,6 +67,7 @@ export function SiteHeader() {
             size="icon"
             className="lg:hidden"
             aria-expanded={open}
+            aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
           >
@@ -75,7 +78,7 @@ export function SiteHeader() {
 
       {open ? (
         <div className="border-t border-border bg-surface lg:hidden">
-          <nav className="mx-auto flex max-w-6xl flex-col px-4 py-3">
+          <nav id="mobile-nav" aria-label="Mobile navigation" className="mx-auto flex max-w-6xl flex-col px-4 py-3">
             {nav.map((item) => (
               <Link
                 key={item.to}
