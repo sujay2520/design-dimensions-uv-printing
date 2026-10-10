@@ -573,7 +573,7 @@ function Closing() {
             Bring Your Substrate or Ideas. We Handle the Print.
           </h2>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-accent-fg/80">
-            Enquiries, digital proofs and payment handled smoothly via WhatsApp or studio walk-in.
+            Enquiries and digital proofs handled smoothly via WhatsApp or studio walk-in.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-3">

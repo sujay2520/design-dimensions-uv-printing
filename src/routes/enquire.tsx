@@ -85,10 +85,10 @@ function EnquirePage() {
         <div className="rounded-xl border border-accent/25 bg-accent/5 p-4 text-xs text-muted space-y-1.5">
           <div className="flex items-center gap-1.5 font-semibold text-fg">
             <ShieldCheck className="size-4 text-accent" />
-            <span>Digital Proof & Convenient Payment</span>
+            <span>Digital Proof Confirmation</span>
           </div>
           <p>
-            Share your requirements or artwork file. We inspect your file, share a 1:1 scale digital proof on WhatsApp, and accept convenient payments via WhatsApp (UPI / Bank Transfer) or at the studio upon proof sign-off.
+            Share your requirements or artwork file. We inspect your file, share a 1:1 scale digital proof on WhatsApp, and confirm all technical specs before printing begins.
           </p>
         </div>
       </div>

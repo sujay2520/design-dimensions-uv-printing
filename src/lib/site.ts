@@ -36,7 +36,7 @@ export const site = {
   isWomenOwned: true,
   gstNote: "GST invoice and corporate billing available on request.",
   termsNote:
-    "Designing charges applicable. Work begins upon digital proof confirmation. GST invoice available. Convenient payment via WhatsApp (UPI / Bank Transfer) or at studio.",
+    "Work begins upon digital proof confirmation. GST invoice available on request. Walk-in consultations and direct WhatsApp proofs.",
   areas: [
     "Dwarakanagar",
     "Channasandra",
@@ -792,8 +792,8 @@ export const fileSpecs = [
 
 export const faqs = [
   {
-    q: "Do I need to pay online?",
-    a: "No. This website is purely for service details, technical guidance, and instant WhatsApp quotations. All payments are completed directly at the studio via UPI, cash, or bank transfer after proof confirmation.",
+    q: "Can I place an order online?",
+    a: "No. This website is purely for service details, technical guidance, and direct WhatsApp consultations. Final proofs and orders are confirmed directly via WhatsApp or at our studio.",
   },
   {
     q: "Who are your notable clients?",
