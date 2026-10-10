@@ -1,8 +1,9 @@
+import { useMemo } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Sparkles, CheckCircle, Phone, MessageSquare, ShieldCheck, Leaf, Palette, Award, Clock, Building2, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useOwnerConfig } from "@/lib/owner-store";
-import { faqs, materials, processSteps, services, site, works, prestigiousClients, whatsappHref, whyChooseUs, allFlatSurfaces, substrateCategories, canonicalUrl, getLocalBusinessSchema } from "@/lib/site";
+import { useOwnerConfig, useEffectiveWorks } from "@/lib/owner-store";
+import { faqs, materials, processSteps, services, site, prestigiousClients, whatsappHref, whyChooseUs, allFlatSurfaces, substrateCategories, canonicalUrl, getLocalBusinessSchema } from "@/lib/site";
 import { WhyChooseUsSection } from "@/components/sections/why-choose-us";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 
@@ -355,7 +356,16 @@ function MaterialsSection() {
 }
 
 function WorkPreview() {
-  const preview = works.slice(0, 6);
+  const [effectiveWorks] = useEffectiveWorks();
+  const preview = useMemo(() => {
+    const visible = effectiveWorks.filter((w) => !w.hidden);
+    const featured = visible.filter((w) => w.featured);
+    if (featured.length >= 3) {
+      return featured.slice(0, 6);
+    }
+    return visible.slice(0, 6);
+  }, [effectiveWorks]);
+
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">

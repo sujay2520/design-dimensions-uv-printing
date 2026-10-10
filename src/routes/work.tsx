@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { works, prestigiousClients, whatsappHref, canonicalUrl } from "@/lib/site";
+import { prestigiousClients, whatsappHref, canonicalUrl } from "@/lib/site";
+import { useEffectiveWorks } from "@/lib/owner-store";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Sparkles, CheckCircle2, Maximize2 } from "lucide-react";
@@ -37,11 +38,13 @@ function WorkPage() {
   const [selectedCat, setSelectedCat] = useState<(typeof categories)[number]>("All");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [effectiveWorks] = useEffectiveWorks();
 
   const filteredWorks = useMemo(() => {
-    if (selectedCat === "All") return works;
-    return works.filter((w) => w.category === selectedCat);
-  }, [selectedCat]);
+    const visible = effectiveWorks.filter((w) => !w.hidden);
+    if (selectedCat === "All") return visible;
+    return visible.filter((w) => w.category === selectedCat);
+  }, [effectiveWorks, selectedCat]);
 
   const lightboxItems: LightboxItem[] = useMemo(() => {
     return filteredWorks.map((w) => ({
